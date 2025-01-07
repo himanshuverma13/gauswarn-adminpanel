@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import RouteRoutes from './Components/Common/RouteRoutes/routes';
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+     <RouteRoutes/> 
+    </>
   );
 }
 
