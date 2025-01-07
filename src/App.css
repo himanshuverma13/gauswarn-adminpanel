@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-closed .sidebar {
+  transform: translateX(-100%);
+}
