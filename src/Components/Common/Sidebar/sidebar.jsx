@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FaHome, FaLock } from "react-icons/fa";
+import { IoMdLogIn } from "react-icons/io";
+import { MdWidgets } from "react-icons/md";
 const Sidebar = () => {
   return (
     <>
@@ -49,7 +52,7 @@ const Sidebar = () => {
               className="nav-link"
               href="/demo/breeze/react/template/demo_1/preview/dashboard"
             >
-              <i className="mdi mdi-home menu-icon" />
+              <FaHome className="menu-icon" />
               <span className="menu-title">Dashboard</span>
             </a>
           </li>
@@ -67,12 +70,34 @@ const Sidebar = () => {
               className="nav-link"
               href="/demo/breeze/react/template/demo_1/preview/widgets"
             >
-              <i className="mdi mdi-widgets menu-icon" />
+              <MdWidgets className="menu-icon" />
               <span className="menu-title">Widgets</span>
             </a>
           </li>
-          
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              href="/demo/breeze/react/template/demo_1/preview/widgets"
+            >
+              <IoMdLogIn className="menu-icon" />
+              <span className="menu-title">Login</span>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              href="/demo/breeze/react/template/demo_1/preview/widgets"
+            >
+              <FaLock className="menu-icon" />
+              <span className="menu-title ms-3">Registration</span>
+            </a>
+          </li>
+          <li className="nav-item mt-5">
+          <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
+
+        </li>
         </ul>
+        
       </nav>
     </>
   );

@@ -51107,7 +51107,7 @@ svg {
     font-size: 1rem
 }
 
-.navbar .navbar-menu-wrapper .navbar-toggler i:before {
+.navbar .navbar-menu-wrapper .navbar-toggler :before {
     width: 34px;
     height: 34px;
     border-radius: 50px;
@@ -51636,11 +51636,11 @@ svg {
     cursor: pointer
 }
 
-.sidebar .nav .nav-item .nav-link i {
+/* .sidebar .nav .nav-item .nav-link i {
     color: inherit
-}
+} */
 
-.sidebar .nav .nav-item .nav-link i.menu-icon {
+.sidebar .nav .nav-item .nav-link .menu-icon {
     font-size: 20px;
     line-height: 1;
     margin-right: 10px;
@@ -51652,7 +51652,7 @@ svg {
     margin-right: 0
 }
 
-.sidebar .nav .nav-item .nav-link i.menu-icon:before {
+.sidebar .nav .nav-item .nav-link .menu-icon:before {
     vertical-align: middle
 }
 

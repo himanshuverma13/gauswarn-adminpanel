@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Sidebar from "../../Common/Sidebar/sidebar";
 import Navbar from "../../Common/Navbar/navbar";
 
+import { IoMdBasket, IoIosBriefcase } from "react-icons/io";
+import { TbCube } from "react-icons/tb";
+import { FaUserCircle } from "react-icons/fa";
+
 const Home = () => {
   const [HandleSidePanel, setHandleSidePanel] = useState("");
   const handleSidePanel = (data) => {
@@ -62,8 +66,11 @@ const Home = () => {
                                     $8,753.<span className="h5">00</span>
                                   </h2>
                                 </div>
-                                <i className="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning" />
-                              </div>
+                                {/* <i className="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning" /> */}
+                                <div className="card-icon-indicator bg-inverse-icon-warning d-flex align-items-center justify-content-center">
+                                  <IoMdBasket />
+
+                                </div>                              </div>
                               <h6 className="text-white">
                                 18.33% Since last month
                               </h6>
@@ -80,7 +87,10 @@ const Home = () => {
                                     $5,300.<span className="h5">00</span>
                                   </h2>
                                 </div>
-                                <i className="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger" />
+                                {/* <i className="card-icon-indicator mdi mdi-cube-outline " /> */}
+                                <div className="card-icon-indicator bg-inverse-icon-danger d-flex align-items-center justify-content-center">
+                                  <TbCube />
+                                </div>
                               </div>
                               <h6 className="text-white">
                                 13.21% Since last month
@@ -98,7 +108,11 @@ const Home = () => {
                                     $1,753.<span className="h5">00</span>
                                   </h2>
                                 </div>
-                                <i className="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary" />
+                                {/* <i className="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary" /> */}
+                                <div className="card-icon-indicator bg-inverse-icon-primary d-flex align-items-center justify-content-center">
+                                  <IoIosBriefcase />
+
+                                </div>
                               </div>
                               <h6 className="text-white">
                                 67.98% Since last month
@@ -116,7 +130,9 @@ const Home = () => {
                                   </p>
                                   <h2 className="text-white">2368</h2>
                                 </div>
-                                <i className="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success" />
+                                <div className="card-icon-indicator bg-inverse-icon-success d-flex align-items-center justify-content-center">
+                                  <FaUserCircle />
+                                </div>
                               </div>
                               <h6 className="text-white">
                                 20.32% Since last month
