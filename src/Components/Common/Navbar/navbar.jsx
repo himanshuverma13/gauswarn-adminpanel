@@ -7,6 +7,10 @@ import img2 from "../../Assets/images/faces/face3.jpg";
 import img3 from "../../Assets/images/faces/face2.jpg";
 import img4 from "../../Assets/images/faces/face1.jpg";
 
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoIosNotifications } from "react-icons/io";
+import { MdOutlineEmail } from "react-icons/md";
+
 const Navbar = ({ handleSidepanel }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -30,7 +34,7 @@ const Navbar = ({ handleSidepanel }) => {
             type="button"
             onClick={toggleCollapse}
           >
-            <i className="mdi mdi-menu" />
+            <GiHamburgerMenu className="nav-icon" />
           </button>
           <ul className="navbar-nav">
             <li className="nav-item dropdown">
@@ -40,7 +44,7 @@ const Navbar = ({ handleSidepanel }) => {
                 href="#"
                 data-toggle="dropdown"
               >
-                <i className="mdi mdi-bell-outline" />
+                <IoIosNotifications className="nav-icon" />
                 <span className="count count-varient1">7</span>
               </a>
               <div
@@ -101,7 +105,9 @@ const Navbar = ({ handleSidepanel }) => {
                 href="#"
                 data-toggle="dropdown"
               >
-                <i className="mdi mdi-email-outline" />
+                <div className="nav-icon">
+                <MdOutlineEmail />
+                </div>
                 <span className="count count-varient2">5</span>
               </a>
               <div
