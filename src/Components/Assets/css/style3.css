@@ -48610,9 +48610,9 @@ ul li {
     margin-right: 0
 }
 
-.product-item-wrapper {
+/* .product-item-wrapper {
     margin-bottom: -15px
-}
+} */
 
 .product-item-wrapper .product-item {
     box-shadow: none;
@@ -49768,12 +49768,12 @@ footer h4 a {
 }
 
 .auth .login-half-bg {
-    /* background: url(/demo/breeze/react/template/demo_1/preview/static/media/login-bg.2eeb0447.jpg); */
+    background: url(../../Assets/images/Login/login-bg.jpg);
     background-size: cover
 }
 
 .auth .register-half-bg {
-    /* background: url(/demo/breeze/react/template/demo_1/preview/static/media/register-bg.2ccde6b9.jpg); */
+    background: url(../../Assets//images/Login/register-bg.jpg);
     background-size: cover
 }
 
