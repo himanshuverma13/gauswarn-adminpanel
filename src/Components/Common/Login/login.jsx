@@ -5,7 +5,7 @@ const UserLogin = () => {
     <>
       <div>Login</div>
     </>
-  )
-}
+  );
+};
 
 export default UserLogin;
