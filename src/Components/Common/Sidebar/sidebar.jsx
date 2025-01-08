@@ -3,6 +3,7 @@ import React from "react";
 import { FaHome, FaLock } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { MdWidgets } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   return (
     <>
@@ -75,29 +76,27 @@ const Sidebar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a
+            <NavLink to="/login"
               className="nav-link"
-              href="/demo/breeze/react/template/demo_1/preview/widgets"
             >
               <IoMdLogIn className="menu-icon" />
               <span className="menu-title">Login</span>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a
+            <NavLink to="/register"
               className="nav-link"
-              href="/demo/breeze/react/template/demo_1/preview/widgets"
             >
               <FaLock className="menu-icon" />
               <span className="menu-title ms-3">Registration</span>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item mt-5">
-          <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
+            <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
 
-        </li>
+          </li>
         </ul>
-        
+
       </nav>
     </>
   );

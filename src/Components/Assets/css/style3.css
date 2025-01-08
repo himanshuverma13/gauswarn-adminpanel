@@ -48610,9 +48610,9 @@ ul li {
     margin-right: 0
 }
 
-/* .product-item-wrapper {
+.product-item-wrapper {
     margin-bottom: -15px
-} */
+}
 
 .product-item-wrapper .product-item {
     box-shadow: none;
@@ -48626,6 +48626,7 @@ ul li {
 
 .product-item-wrapper .product-item .card-body {
     padding: 20px 25px;
+    height: 400px;
     display: grid;
     position: relative;
     grid-template-columns: 70% 30%;
@@ -48675,6 +48676,7 @@ ul li {
     width: 100%;
     max-width: 100%;
     object-fit: cover;
+    height: 100% !important;
     -webkit-transform: scale(1);
     transform: scale(1);
     z-index: 1;
@@ -49834,7 +49836,7 @@ footer h4 a {
 
 @media (min-width:768px) {
     .auth.auth-img-bg .auth-form-transparent {
-        width: 55%;
+        width: 70%;
         margin: auto
     }
 }
