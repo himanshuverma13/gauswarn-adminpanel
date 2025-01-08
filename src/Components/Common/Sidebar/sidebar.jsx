@@ -3,7 +3,11 @@ import React from "react";
 import { FaHome, FaLock } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { MdWidgets } from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
+
 const Sidebar = () => {
+  const location = useLocation();
+  console.log("location : ", location?.pathname);
   return (
     <>
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
@@ -47,14 +51,13 @@ const Sidebar = () => {
               </div>
             </a>
           </li>
-          <li className="nav-item active">
-            <a
-              className="nav-link"
-              href="/demo/breeze/react/template/demo_1/preview/dashboard"
-            >
+          <li className={`nav-item ${
+              location?.pathname == "/" ? "active" : ""
+            }`}>
+            <Link className="nav-link" to={"/"}>
               <FaHome className="menu-icon" />
               <span className="menu-title">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item menu-items">
             <a
@@ -73,6 +76,16 @@ const Sidebar = () => {
               <MdWidgets className="menu-icon" />
               <span className="menu-title">Widgets</span>
             </a>
+          </li>
+          <li
+            className={`nav-item ${
+              location?.pathname == "/order" ? "active" : ""
+            }`}
+          >
+            <Link className="nav-link" to={"/order"}>
+              <MdWidgets className="menu-icon" />
+              <span className="menu-title">Order Details</span>
+            </Link>
           </li>
           <li className="nav-item">
             <a
@@ -93,11 +106,9 @@ const Sidebar = () => {
             </a>
           </li>
           <li className="nav-item mt-5">
-          <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
-
-        </li>
+            <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
+          </li>
         </ul>
-        
       </nav>
     </>
   );
