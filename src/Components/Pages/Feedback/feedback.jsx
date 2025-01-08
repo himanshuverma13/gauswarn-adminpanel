@@ -26,7 +26,7 @@ const Feedback = () => {
             <Navbar handleSidepanel={handleSidePanel} />
             <div className="main-panel w-100">
               <TestimonialCarousel/>
-              <Footer/>
+              {/* <Footer/> */}
             </div>
           </div>
         </div>
