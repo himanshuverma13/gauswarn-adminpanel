@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Navbar from '../../Common/Navbar/navbar';
 import Sidebar from '../../Common/Sidebar/sidebar';
-import Footer from '../../Common/Footer/footer';
-import ProductdetailCards from "../../Common/ProductDetailscards/productdetails";
-const Product = () => {
+// import Footer from '../../Common/Footer/footer';
+import CustomerCards from '../../Common/CustomerCards/customercards';
+const Customerinfo = () => {
     const [HandleSidePanel, setHandleSidePanel] = useState("");
     const handleSidePanel = (data) => {
         setHandleSidePanel(data);
@@ -18,14 +18,15 @@ const Product = () => {
                     <div className="container-fluid page-body-wrapper">
                         <Navbar handleSidepanel={handleSidePanel} />
                         <div className="main-panel w-100">
-                            <ProductdetailCards />
-                            <Footer />
+                    {/* <h1 className='text-center'>Customer Info</h1> */}
+                            <CustomerCards />
+                            {/* <Footer /> */}
                         </div>
                     </div>
                 </div>
             </section>
         </>
-    )
-}
+    );
+};
 
-export default Product;
+export default Customerinfo;
