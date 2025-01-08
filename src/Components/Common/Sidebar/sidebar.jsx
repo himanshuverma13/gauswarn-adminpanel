@@ -96,12 +96,23 @@ const Sidebar = () => {
             </Link>
           </li>
           <li
-            className={`nav-item ${location?.pathname == "/customer" ? "active" : ""
-              }`}
+            className={`nav-item ${
+              location?.pathname == "/contact-info" ? "active" : ""
+            }`}
           >
-            <Link className="nav-link" to={"/customer"}>
+            <Link className="nav-link" to={"/contact-info"}>
               <FaIdCard className="menu-icon" />
-              <span className="menu-title">Customer Info</span>
+              <span className="menu-title">Contact Info</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item ${
+              location?.pathname == "/user-info" ? "active" : ""
+            }`}
+          >
+            <Link className="nav-link" to={"/user-info"}>
+              <FaIdCard className="menu-icon" />
+              <span className="menu-title">User Info</span>
             </Link>
           </li>
           <li
