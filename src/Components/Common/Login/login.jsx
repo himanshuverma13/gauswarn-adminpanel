@@ -37,7 +37,7 @@ const UserLogin = () => {
                           <label>Username</label>
                           <div className="input-group">
                             <div className="input-group-prepend bg-transparent">
-                              <span className="input-group-text bg-transparent border-right-0">
+                              <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                 <FaRegUser className="text-primary fw-bold" />
                               </span>
                             </div>
@@ -57,7 +57,7 @@ const UserLogin = () => {
                           <label>Password</label>
                           <div className="input-group">
                             <div className="input-group-prepend bg-transparent">
-                              <span className="input-group-text bg-transparent border-right-0">
+                              <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                 <FaLock className="text-primary fw-bold" />
                               </span>
                             </div>
