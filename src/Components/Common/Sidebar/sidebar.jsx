@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FaHome, FaLock } from "react-icons/fa";
+import { FaHome, FaLock, FaCartArrowDown, FaIdCard } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { MdWidgets } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
@@ -60,22 +60,20 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item menu-items">
-            <a
+            <Link to={""}
               className="nav-link"
-              href="/demo/breeze/react/template/demo_1/preview/layout/RtlLayout"
             >
               <i className="mdi mdi-translate menu-icon" />
               <span className="menu-title">RTL</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a
+            <Link to={""}
               className="nav-link"
-              href="/demo/breeze/react/template/demo_1/preview/widgets"
             >
               <MdWidgets className="menu-icon" />
               <span className="menu-title">Widgets</span>
-            </a>
+            </Link>
           </li>
           <li
             className={`nav-item ${
@@ -87,7 +85,29 @@ const Sidebar = () => {
               <span className="menu-title">Order Details</span>
             </Link>
           </li>
-          <li className="nav-item">
+          <li
+            className={`nav-item ${
+              location?.pathname == "/product" ? "active" : ""
+            }`}
+          >
+            <Link className="nav-link" to={"/product"}>
+              <FaCartArrowDown className="menu-icon" />
+              <span className="menu-title">Product</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item ${
+              location?.pathname == "/customer" ? "active" : ""
+            }`}
+          >
+            <Link className="nav-link" to={"/customer"}>
+              <FaIdCard className="menu-icon" />
+              <span className="menu-title">Customer Info</span>
+            </Link>
+          </li>
+          <li  className={`nav-item ${
+              location?.pathname == "/login" ? "active" : ""
+            }`}>
             <Link to={"/login"}
               className="nav-link"
             >
@@ -95,7 +115,9 @@ const Sidebar = () => {
               <span className="menu-title">Login</span>
             </Link>
           </li>
-          <li className="nav-item">
+          <li  className={`nav-item ${
+              location?.pathname == "/register" ? "active" : ""
+            }`}>
             <Link to={"/register"}
               className="nav-link"
             >
