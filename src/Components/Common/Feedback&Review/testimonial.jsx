@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../../Assets/css/testimonial.css";
 
 import second from "../../Assets/images/favicon.png";
+import { FeedbackAPI } from "../APIs/api";
 
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [Feedback, setFeedback] = useState();
   const cards = [
     {
       title: "Card 1",
@@ -33,6 +35,20 @@ const TestimonialCarousel = () => {
     },
   ];
 
+  const FetchFeedback = async () => {
+    try {
+      const response = await FeedbackAPI();
+      console.log("response: ", response);
+      setFeedback(response);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchFeedback();
+  }, []);
+
   const totalCards = cards.length;
 
   // Function to go to the next set of cards
@@ -51,7 +67,7 @@ const TestimonialCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextCard();
-    }, 3000000); // Change slide every 3 seconds
+    }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -71,25 +87,22 @@ const TestimonialCarousel = () => {
         </div>
         <div className="card-slider">
           <div
-            className="card-slider-inner"
+            className="card-slider-inner py-2"
             style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
           >
-            {cards.map((card, index) => (
+            {Feedback?.map((card, index) => (
               <div className="card-wrapper" key={index}>
-                <div className="card mb-3 shadow">
+                <div className="card mb-3 h-100 shadow">
                   <div
                     className={`card-body feedback-card border-left border-${getRandomColor()}`}
                   >
                     <div className="d-flex justify-content-between">
-                      <h5 className="card-title">{card.title}</h5>
+                      <h5 className="card-title">{card?.name}</h5>
                       <p>01/01/25</p>
                     </div>
-                    <hr  className="mt-0 mb-3"/>
+                    <hr className="mt-0 mb-3" />
                     <p className="card-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio sit velit labore omnis in quas earum, officiis
-                      delectus expedita qui, necessitatibus unde recusandae
-                      numquam, inventore adipisci natus. Impedit, aliquam. Cum!
+                     {card?.feedback}
                     </p>
                   </div>
                 </div>
@@ -97,12 +110,14 @@ const TestimonialCarousel = () => {
             ))}
           </div>
         </div>
+        <div className="my-4">
         <button className="btn btn-primary me-2" onClick={prevCard}>
           Prev
         </button>
         <button className="btn btn-primary" onClick={nextCard}>
           Next
         </button>
+        </div>
       </div>
     </div>
   );

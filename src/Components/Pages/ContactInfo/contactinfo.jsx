@@ -3,7 +3,7 @@ import Navbar from '../../Common/Navbar/navbar';
 import Sidebar from '../../Common/Sidebar/sidebar';
 // import Footer from '../../Common/Footer/footer';
 import CustomerCards from '../../Common/CustomerCards/customercards';
-const Customerinfo = () => {
+const Contactinfo = () => {
     const [HandleSidePanel, setHandleSidePanel] = useState("");
     const handleSidePanel = (data) => {
         setHandleSidePanel(data);
@@ -29,4 +29,4 @@ const Customerinfo = () => {
     );
 };
 
-export default Customerinfo;
+export default Contactinfo;
