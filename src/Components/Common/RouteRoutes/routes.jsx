@@ -7,6 +7,7 @@ import Order from "../../Pages/Order/order";
 import Feedback from "../../Pages/Feedback/feedback";
 import Product from "../../Pages/Product/product";
 import Customerinfo from "../../Pages/CustomerInfo/customerinfo";
+import Forgot from "../ForgotPass/forgot";
 
 const RouteRoutes = () => {
   return (
@@ -20,6 +21,8 @@ const RouteRoutes = () => {
           <Route path="/order" element={<Order />}></Route>
           <Route path="/feedback" element={<Feedback />}></Route>
           <Route path="/customer" element={<Customerinfo />}></Route>
+          <Route path="/forgot" element={<Forgot />}></Route>
+
 
         </Routes>
       </Router>

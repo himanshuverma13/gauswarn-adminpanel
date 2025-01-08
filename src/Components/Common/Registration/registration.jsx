@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import { FaRegUser, FaPhoneAlt, FaLock } from 'react-icons/fa';
 import { IoMailOutline } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
-
+//  Images 
+import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 const Registration = () => {
     const {
         register,
@@ -28,16 +29,14 @@ const Registration = () => {
                             <div className="row flex-grow">
                                 <div className="col-lg-6 d-flex align-items-center justify-content-center">
                                     <div className="auth-form-transparent text-left p-3 shadow shadow-primary">
-                                        <div className="brand-logo">
+                                        <div className="brand-logo mb-3 d-flex justify-content-center">
                                             <img
-                                                src="/demo/breeze/react/template/demo_1/preview/static/media/logo.1cb8ea24.svg"
+                                                src={Logo}
                                                 alt="logo"
                                             />
                                         </div>
-                                        <h4>New here?</h4>
-                                        <h6 className="font-weight-light">
-                                            Join us today! It takes only few steps
-                                        </h6>
+                                        <h2 className='text-center text-uppercase'>Registration</h2>
+                                      
                                         <form className="pt-3 row" onSubmit={handleSubmit(onSubmit)}>
                                             <div className="form-group col-lg-12 col-lg-12">
                                                 <label>Username</label>
