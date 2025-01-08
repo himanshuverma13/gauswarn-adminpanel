@@ -7,7 +7,7 @@ const OrderDetails = () => {
         <div className="row">
           <div className="col-12">
             <div className="card">
-              <div className="card-body">
+              <div className="card-body ">
                 <div className="row">
                   <div className="col-12">
                     <div>
@@ -62,7 +62,7 @@ const OrderDetails = () => {
                                 Status
                                 <span className="caret-4-desc" />
                               </th>
-                              <th tabIndex={0}>Action</th>
+                              <th className="text-center" tabIndex={0}>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -79,10 +79,6 @@ const OrderDetails = () => {
                               </td>
                               <td>
                                 <div>
-                                  <button className="btn btn-light">
-                                    <i className="mdi mdi-eye-outline text-primary" />
-                                    View
-                                  </button>
                                   <button className="btn btn-light">
                                     <i className="mdi mdi-close text-danger" />
                                     Remove
@@ -103,10 +99,6 @@ const OrderDetails = () => {
                               </td>
                               <td>
                                 <div>
-                                  <button className="btn btn-light">
-                                    <i className="mdi mdi-eye-outline text-primary" />
-                                    View
-                                  </button>
                                   <button className="btn btn-light">
                                     <i className="mdi mdi-close text-danger" />
                                     Remove

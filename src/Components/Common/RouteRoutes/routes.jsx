@@ -6,7 +6,8 @@ import Registration from "../Registration/registration";
 import Order from "../../Pages/Order/order";
 import Feedback from "../../Pages/Feedback/feedback";
 import Product from "../../Pages/Product/product";
-import Customerinfo from "../../Pages/CustomerInfo/customerinfo";
+import Contactinfo from "../../Pages/ContactInfo/contactinfo";
+import UserInfo from "../../Pages/UserInfo/userInfo";
 
 const RouteRoutes = () => {
   return (
@@ -19,7 +20,8 @@ const RouteRoutes = () => {
           <Route path="/product" element={<Product />}></Route>
           <Route path="/order" element={<Order />}></Route>
           <Route path="/feedback" element={<Feedback />}></Route>
-          <Route path="/customer" element={<Customerinfo />}></Route>
+          <Route path="/contact-info" element={<Contactinfo />}></Route>
+          <Route path="/user-info" element={<UserInfo />}></Route>
 
         </Routes>
       </Router>
