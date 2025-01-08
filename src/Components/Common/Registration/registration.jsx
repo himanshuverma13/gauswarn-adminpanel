@@ -27,7 +27,7 @@ const Registration = () => {
                         <div className="d-flex align-items-stretch auth auth-img-bg h-100">
                             <div className="row flex-grow">
                                 <div className="col-lg-6 d-flex align-items-center justify-content-center">
-                                    <div className="auth-form-transparent text-left p-3">
+                                    <div className="auth-form-transparent text-left p-3 shadow shadow-primary">
                                         <div className="brand-logo">
                                             <img
                                                 src="/demo/breeze/react/template/demo_1/preview/static/media/logo.1cb8ea24.svg"
@@ -38,12 +38,12 @@ const Registration = () => {
                                         <h6 className="font-weight-light">
                                             Join us today! It takes only few steps
                                         </h6>
-                                        <form className="pt-3" onSubmit={handleSubmit(onSubmit)}>
-                                            <div className="form-group">
+                                        <form className="pt-3 row" onSubmit={handleSubmit(onSubmit)}>
+                                            <div className="form-group col-lg-12 col-lg-12">
                                                 <label>Username</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend bg-transparent">
-                                                        <span className="input-group-text bg-transparent border-right-0">
+                                                        <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                                             <FaRegUser className="text-primary" />
                                                         </span>
                                                     </div>
@@ -58,11 +58,11 @@ const Registration = () => {
                                                     <p className="text-danger">{errors.username.message}</p>
                                                 )}
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group col-lg-12">
                                                 <label>Email</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend bg-transparent">
-                                                        <span className="input-group-text bg-transparent border-right-0">
+                                                        <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                                             <IoMailOutline className="text-primary fs-4" />
                                                         </span>
                                                     </div>
@@ -83,11 +83,11 @@ const Registration = () => {
                                                     <p className="text-danger">{errors.email.message}</p>
                                                 )}
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group col-lg-12">
                                                 <label>Mobile Number</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend bg-transparent">
-                                                        <span className="input-group-text bg-transparent border-right-0">
+                                                        <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                                             <FaPhoneAlt className="text-primary" />
                                                         </span>
                                                     </div>
@@ -108,11 +108,11 @@ const Registration = () => {
                                                     <p className="text-danger">{errors.mobile.message}</p>
                                                 )}
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group col-lg-6">
                                                 <label>Password</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend bg-transparent">
-                                                        <span className="input-group-text bg-transparent border-right-0">
+                                                        <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                                             <FaLock className="text-primary" />
                                                         </span>
                                                     </div>
@@ -133,11 +133,11 @@ const Registration = () => {
                                                     <p className="text-danger">{errors.password.message}</p>
                                                 )}
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group col-lg-6">
                                                 <label>Confirm Password</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend bg-transparent">
-                                                        <span className="input-group-text bg-transparent border-right-0">
+                                                        <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                                             <FaLock className="text-primary" />
                                                         </span>
                                                     </div>
@@ -154,19 +154,21 @@ const Registration = () => {
                                                     <p className="text-danger">{errors.confirmPassword.message}</p>
                                                 )}
                                             </div>
-                                            <div className="mt-2">
-                                                <button
-                                                    type="submit"
-                                                    className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                                >
-                                                    SIGN UP
-                                                </button>
+                                            <div className='col-lg-12 d-flex justify-content-center'>
+                                                <div className="mt-2">
+                                                    <button
+                                                        type="submit"
+                                                        className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                                                    >
+                                                        SIGN UP
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className="text-center mt-2 font-weight-light">
+                                            <div className="text-center my-3 font-weight-light col-lg-12 d-flex justify-content-center">
                                                 Already have an account?{' '}
-                                                <NavLink 
+                                                <NavLink
                                                     className="text-primary"
-                                                     to="/login"
+                                                    to="/login"
                                                 >
                                                     Login
                                                 </NavLink>

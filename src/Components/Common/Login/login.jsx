@@ -34,10 +34,10 @@ const UserLogin = () => {
                       <h6 className="font-weight-light">Happy to see you again!</h6>
                       <form className="pt-3" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                          <label>Username</label>
+                          <label>Email / Mobile Number</label>
                           <div className="input-group">
                             <div className="input-group-prepend bg-transparent">
-                              <span className="input-group-text bg-transparent border-right-0">
+                              <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                 <FaRegUser className="text-primary fw-bold" />
                               </span>
                             </div>
@@ -45,8 +45,8 @@ const UserLogin = () => {
                               type="text"
                               className={`form-control form-control-lg border-left-0 ${errors.username ? 'is-invalid' : ''
                                 }`}
-                              placeholder="Username"
-                              {...register('username', { required: 'Username is required' })}
+                              placeholder="Email / Mobile Number"
+                              {...register('username', { required: 'Email / Mobile Number is required' })}
                             />
                           </div>
                           {errors.username && (
@@ -57,7 +57,7 @@ const UserLogin = () => {
                           <label>Password</label>
                           <div className="input-group">
                             <div className="input-group-prepend bg-transparent">
-                              <span className="input-group-text bg-transparent border-right-0">
+                              <span className="input-group-text bg-transparent border-right-0 rounded-0">
                                 <FaLock className="text-primary fw-bold" />
                               </span>
                             </div>
