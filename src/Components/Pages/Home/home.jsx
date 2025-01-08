@@ -5,6 +5,7 @@ import Navbar from "../../Common/Navbar/navbar";
 import { IoMdBasket, IoIosBriefcase } from "react-icons/io";
 import { TbCube } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
+import Footer from "../../Common/Footer/footer";
 
 const Home = () => {
   const [HandleSidePanel, setHandleSidePanel] = useState("");
@@ -1111,25 +1112,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <footer className="footer">
-                <div className="d-sm-flex justify-content-center justify-content-sm-between">
-                  <span className="text-muted text-center text-sm-left d-block d-sm-inline-block">
-                    Copyright © 2019{" "}
-                    <a
-                      href="https://www.bootstrapdash.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      BootstrapDash
-                    </a>
-                    . All rights reserved.
-                  </span>
-                  <span className="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-                    Hand-crafted &amp; made with{" "}
-                    <i className="mdi mdi-heart text-danger" />
-                  </span>
-                </div>
-              </footer>
+              <Footer/>
             </div>
           </div>
         </div>
