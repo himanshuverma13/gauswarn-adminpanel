@@ -88,20 +88,20 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <NavLink to="/login"
+            <Link to={"/login"}
               className="nav-link"
             >
               <IoMdLogIn className="menu-icon" />
               <span className="menu-title">Login</span>
-            </NavLink>
+            </Link>
           </li>
           <li className="nav-item">
-            <NavLink to="/register"
+            <Link to={"/register"}
               className="nav-link"
             >
               <FaLock className="menu-icon" />
               <span className="menu-title ms-3">Registration</span>
-            </NavLink>
+            </Link>
           </li>
           <li className="nav-item mt-5">
             <button className="btn btn-primary py-2 px-4 ">LOGOUT</button>
