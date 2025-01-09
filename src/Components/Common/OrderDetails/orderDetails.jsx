@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
+// API
+import { GetAllOrderDetailsAPI } from "../APIs/api";
+
 const OrderDetails = () => {
+  const [OrderDetails, setOrderDetails] = useState()
+  const FetchOrderDetails = async () => {
+      try {
+        const response = await GetAllOrderDetailsAPI();
+        console.log("response: ", response);
+        setOrderDetails(response);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+  
+    useEffect(() => {
+      FetchOrderDetails();
+    }, []);
   return (
     <div className="content-wrapper">
       <div>
         <div className="row">
           <div className="col-12">
             <div className="card">
-              <div className="card-body ">
+              <div className="card-body">
                 <div className="row">
                   <div className="col-12">
                     <div>
@@ -19,14 +36,14 @@ const OrderDetails = () => {
                             <tr>
                               <th
                                 tabIndex={0}
-                                aria-label="Order # sort desc"
+                                // aria-label="Order # sort desc"
                                 className="sortable"
                               >
-                                Order #<span className="caret-4-desc" />
+                                ID#<span className="caret-4-desc" />
                               </th>
                               <th
                                 tabIndex={0}
-                                aria-label="Customer sortable"
+                                // aria-label="Customer sortable"
                                 className="sortable"
                               >
                                 Customer
@@ -34,31 +51,63 @@ const OrderDetails = () => {
                               </th>
                               <th
                                 tabIndex={0}
-                                aria-label="Ship to sortable"
+                                // aria-label="Ship to sortable"
                                 className="sortable"
                               >
-                                Ship to
+                                Date
                                 <span className="caret-4-desc" />
                               </th>
                               <th
                                 tabIndex={0}
-                                aria-label="Base Price sortable"
+                                // aria-label="Base Price sortable"
                                 className="sortable"
                               >
-                                Base Price
+                                Mobile Number
                                 <span className="caret-4-desc" />
                               </th>
                               <th
                                 tabIndex={0}
-                                aria-label="Purchased Price sortable"
+                                // aria-label="Base Price sortable"
                                 className="sortable"
                               >
-                                Purchased Price
+                              City
                                 <span className="caret-4-desc" />
                               </th>
                               <th
                                 tabIndex={0}
-                                aria-label="Status sortable"
+                                // aria-label="Base Price sortable"
+                                className="sortable"
+                              >
+                                Payment Paid
+                                <span className="caret-4-desc" />
+                              </th>
+                              <th
+                                tabIndex={0}
+                                // aria-label="status Price sortable"
+                                className="sortable"
+                              >
+                                Payment Details
+                                <span className="caret-4-desc" />
+                              </th>
+                              <th
+                                tabIndex={0}
+                                // aria-label="Purchased Price sortable"
+                                className="sortable"
+                              >
+                                Payment Details
+                                <span className="caret-4-desc" />
+                              </th>
+                              <th
+                                tabIndex={0}
+                                // aria-label="status Price sortable"
+                                className="sortable"
+                              >
+                                Total Amount
+                                <span className="caret-4-desc" />
+                              </th>
+                              <th
+                                tabIndex={0}
+                                // aria-label="Status sortable"
                                 className="sortable"
                               >
                                 Status
@@ -68,46 +117,35 @@ const OrderDetails = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>WD-80</td>
-                              <td>Tony</td>
-                              <td>Germany</td>
-                              <td>$1100</td>
-                              <td>$2300</td>
-                              <td>
-                                <label className="badge badge-info">
-                                  On hold
-                                </label>
-                              </td>
-                              <td>
-                                <div>
-                                  <button className="btn btn-light d-flex align-items-center">
-                                    <RiDeleteBin6Fill className="text-danger" />
-                                    Remove
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>WD-79</td>
-                              <td>Jack</td>
-                              <td>Tokyo</td>
-                              <td>$3100</td>
-                              <td>$7300</td>
-                              <td>
-                                <label className="badge badge-danger">
-                                  Pending
-                                </label>
-                              </td>
-                              <td>
-                                <div>
-                                  <button className="btn btn-light d-flex align-items-center">
-                                    <RiDeleteBin6Fill  className="text-danger"/>
-                                    Remove
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
+                           {OrderDetails?.map((item, index) => (
+                             <tr>
+                             <td>{item.user_id}</td>
+                             <td>{item.user_name}</td>
+                             <td>{item.date}</td>
+                             <td>{item.user_mobile_num}</td>
+                             <td>{item.user_city}</td>
+                             <td>{item.isPaymentPaid}</td>
+                             <td>000</td>
+                             <td>000</td>
+
+                             <td>{item.user_total_amount}</td>
+
+                             <td>
+                               <label className="badge badge-info">
+                                 On hold
+                               </label>
+                             </td>
+                             <td>
+                               <div>
+                                 <button className="btn btn-light d-flex align-items-center">
+                                   <RiDeleteBin6Fill className="text-danger" />
+                                   Remove
+                                 </button>
+                               </div>
+                             </td>
+                           </tr>
+                           ))}
+                            
                           </tbody>
                         </table>
                       </div>

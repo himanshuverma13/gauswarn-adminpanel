@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+// API
+import { GetAllUser } from "../APIs/api";
 
 const UserDetails = () => {
+  const [UserInfo, setUserInfo] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(8); // Adjust the number of users per page
+
+  const FetchUserInfo = async () => {
+    try {
+      const response = await GetAllUser();
+      console.log("response: ", response);
+      setUserInfo(response);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchUserInfo();
+  }, []);
+
+  // Pagination logic
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = UserInfo.slice(indexOfFirstUser, indexOfLastUser);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(UserInfo.length / usersPerPage);
+
   return (
     <div className="content-wrapper">
       <div>
@@ -16,133 +46,93 @@ const UserDetails = () => {
                         <table className="table table-bordered">
                           <thead>
                             <tr>
-                              <th
-                                tabIndex={0}
-                                aria-label="Order # sort desc"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Order # sort desc" className="sortable">
                                 ID #<span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Purchased On sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Purchased On sortable" className="sortable">
                                 Name
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Customer sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Customer sortable" className="sortable">
                                 Email
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Ship to sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Ship to sortable" className="sortable">
                                 Phone No
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Base Price sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Base Price sortable" className="sortable">
                                 Address
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Purchased Price sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Purchased Price sortable" className="sortable">
                                 Country
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Purchased Price sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Purchased Price sortable" className="sortable">
                                 State
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Purchased Price sortable"
-                                className="sortable"
-                              >
+                              <th tabIndex={0} aria-label="Purchased Price sortable" className="sortable">
                                 City
                                 <span className="caret-4-desc" />
                               </th>
-                              <th
-                                tabIndex={0}
-                                aria-label="Status sortable"
-                                className="sortable"
-                              >
-                                PIN 
+                              <th tabIndex={0} aria-label="Status sortable" className="sortable">
+                                PIN
                                 <span className="caret-4-desc" />
                               </th>
                               <th className="text-center" tabIndex={0}>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>XN-9</td>
-                              <td>29/09/2019</td>
-                              <td>John</td>
-                              <td>Tokyo</td>
-                              <td>$2100</td>
-                              <td>$6300</td>
-                              <td>$6300</td>
-                              <td>$6300</td>
-                              <td>$6300</td>
-                              
-                              <td>
-                                <div>
-                                  <button className="btn btn-outline-danger d-flex align-items-center">
-                                  <RiDeleteBin6Fill />
-                                    Remove
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>XN-8</td>
-                              <td>29/09/2019</td>
-                              <td>Tim</td>
-                              <td>Italy</td>
-                              <td>$6300</td>
-                              <td>$2100</td>
-                              <td>$2100</td>
-                              <td>$2100</td>
-                              <td>$2100</td>
-                              
-                              <td>
-                                <div>
-                                  <button className="btn btn-outline-danger d-flex align-items-center">
-                                    <RiDeleteBin6Fill />
-                                    Remove
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
+                            {currentUsers?.map((items, index) => (
+                              <tr key={index}>
+                                <td>{items.user_id}</td>
+                                <td>{items.user_name}</td>
+                                <td>{items.user_email}</td>
+                                <td>{items.user_mobile_num}</td>
+                                <td>{items.user_house_number} {", "} {items.user_landmark}</td>
+                                <td>{items.user_country}</td>
+                                <td>{items.user_state}</td>
+                                <td>{items.user_city}</td>
+                                <td>{items.user_pincode}</td>
+                                <td>
+                                  <div>
+                                    <button className="btn btn-outline-danger d-flex align-items-center">
+                                      <RiDeleteBin6Fill />
+                                      Remove
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Pagination Controls */}
+                <div className="pagination mt-4 d-flex justify-content-center">
+                  <ul className="pagination-list list-unstyled d-flex">
+                    {[...Array(totalPages)].map((_, index) => (
+                      <li key={index + 1} className={`page-item mx-2 ${currentPage === index + 1 ? 'active' : ''}`}>
+                        <button
+                          onClick={() => paginate(index + 1)}
+                          className="page-link"
+                        >
+                          {index + 1}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

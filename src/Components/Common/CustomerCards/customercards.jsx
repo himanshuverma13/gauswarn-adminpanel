@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-// Images
-import CardsImg from "../../Assets/images/Login/register-bg.jpg";
+// API
+import { GetAllContactAPI } from '../APIs/api';
+
 const CustomerCards = () => {
+      const [Contact, setContact] = useState();
     const CustomerData = [
         {
             name: "RAGNAROCK- Museet for pop, Roskilde",
@@ -24,13 +26,26 @@ const CustomerCards = () => {
             title: "It’s good to start or finish the day with delicious pancakes :)",
             description: "Published on May 23, 2018",
         },
-    ]
+    ];
+const FetchContact = async () => {
+    try {
+      const response = await GetAllContactAPI();
+      console.log("response: ", response);
+      setContact(response);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchContact();
+  }, []);
 
     return (
         <>
             <div className='container-fluid'>
                 <div className='row mt-3'>
-                    {CustomerData.map((items, index) => (
+                    {Contact?.map((items, index) => (
                         <div className='col-lg-4 mb-3'>
                             <div className="card shadow">
                                 {/* <img
@@ -39,14 +54,16 @@ const CustomerCards = () => {
                                     alt="card images"
                                 /> */}
                                 <div className="card-body pb-0">
-                                    <p className="text-muted">{items.name}</p>
-                                    <hr />
-                                    <div>
-                                        <h5>{items.title}</h5>
-                                        <p className="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quisquam omnis? Blanditiis facilis iure officiis, saepe, reiciendis dolorum, ratione iusto doloribus eos placeat temporibus laborum provident ipsam ex? Tempora, ullam.</p>
+                                    <div className='d-flex justify-content-between border-bottom'>
+                                    <h5>{items.user_name}</h5>
+                                    <h5>Mob:- {items.user_mobile}</h5>
                                     </div>
-                                    <div className="d-flex align-items-center justify-content-between text-muted border-top py-3 mt-3">
-                                        <p className="mb-0">{items.description}</p>
+                                    <div>
+                                        <h4 className='mt-2'>{items.user_subject}</h4>
+                                        <p className='text-muted mt-2'>Message:- {items.user_message}</p>
+                                    </div>
+                                    <div className="d-flex align-items-center border-top py-3 mt-3">
+                                        <p className="mb-0">Email:- {items.user_email}</p>
                                        
                                     </div>
                                 </div>

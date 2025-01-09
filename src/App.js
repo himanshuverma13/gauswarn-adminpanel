@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import "../src/Components/Assets/css/style.css";
 import "../src/Components/Assets/css/style2.css";
 import "../src/Components/Assets/css/style3.css";
@@ -9,6 +10,7 @@ import { UserProvider } from "./Components/Common/useContext/useContext";
 function App() {
   return (
     <>
+    <ToastContainer/>
       <UserProvider>
         <RouteRoutes />
       </UserProvider>

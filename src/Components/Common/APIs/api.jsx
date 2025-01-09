@@ -105,3 +105,51 @@ export const RegisterAPI = async (payload) => {
   }
 };
 
+
+export const GetAllUser = async () => {
+  try {
+    const response = await axios.get(`${URL}/getAllUserInfo`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    // console.log('response: ', response);
+    return response?.data?.userInfo;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+// ----------Contact API -------------------------------
+
+export const GetAllContactAPI = async () => {
+  try {
+    const response = await axios.get(`${URL}/getAllContact`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response?.data?.contact;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+// ---------------Order Details API------------------------------
+
+export const GetAllOrderDetailsAPI = async () => {
+  try {
+    const response = await axios.get(`${URL}/getAllOrderDetails`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    // console.log('response: ', response);
+    return response?.data?.orderDetails;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
