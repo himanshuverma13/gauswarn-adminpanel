@@ -105,6 +105,7 @@ export const RegisterAPI = async (payload) => {
   }
 };
 
+// ------------------User Info API---------------------------------------
 
 export const GetAllUser = async () => {
   try {
@@ -147,7 +148,6 @@ export const GetAllOrderDetailsAPI = async () => {
         "ngrok-skip-browser-warning": "69420",
       },
     });
-    // console.log('response: ', response);
     return response?.data?.orderDetails;
   } catch (error) {
     console.log("error: ", error);
