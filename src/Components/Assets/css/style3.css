@@ -48698,16 +48698,17 @@ ul li {
 
 .product-item-wrapper .product-item .card-body .product-title {
     grid-area: product-title;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px
 }
 
 .product-item-wrapper .product-item .card-body .product-price {
     grid-area: product-price;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 500;
     text-align: right;
+    color: red;
     margin-bottom: 10px
 }
 
@@ -48716,7 +48717,6 @@ ul li {
     font-size: 15px;
     color: grey;
     text-align: right;
-    text-decoration: line-through
 }
 
 .product-item-wrapper .product-item .card-body .product-variation {

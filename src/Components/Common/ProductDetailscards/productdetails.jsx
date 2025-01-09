@@ -7,6 +7,8 @@ import {
   UpdateProductAPI,
 } from "../APIs/api";
 
+import { toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";
 const ProductDetailCards = () => {
   const [productDetails, setProductDetails] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
@@ -75,12 +77,15 @@ const ProductDetailCards = () => {
         updatedProducts[currentProductIndex] = { ...data };
         setProductDetails(updatedProducts);
         const response = await UpdateProductAPI(productDetails[currentProductIndex]?.product_id, data);
+        toast.success(response?.message); 
         console.log("response: ", response);
         fetchProducts();
       } else {
         setProductDetails([...productDetails, data]);
         const response = await AddProductAPI(data);
-        // console.log("response: ", response);
+        toast.success(response?.data?.message); 
+
+        console.log("response: ", response);
         fetchProducts();
       }
     } catch (error) {
@@ -91,7 +96,9 @@ const ProductDetailCards = () => {
 
   const confirmDelete = async () => {
     try {
-      await DeleteProductAPI(currentPrdId);
+     const response =  await DeleteProductAPI(currentPrdId);
+     console.log('response : ', response );
+     toast.success(response?.message)
       // setProductDetails(updatedProducts);
       setDeleteConfirm(false);
       fetchProducts();
@@ -126,7 +133,7 @@ const ProductDetailCards = () => {
                         alt="product"
                       />
                     </div>
-                    <p className="product-title">{item?.product_name}</p>
+                    <h4 className="product-title">{item?.product_name}</h4>
                     <p className="product-price">
                       Price: {item?.product_price}
                     </p>
@@ -136,6 +143,9 @@ const ProductDetailCards = () => {
                     <p className="product-description text-truncate">
                       {item?.product_description}
                     </p>
+                    {/* <p className="">
+                      {item?.product_quantity}
+                    </p> */}
                     <p className="product-category">
                       Category: {item?.product_category}
                     </p>
