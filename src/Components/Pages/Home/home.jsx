@@ -6,6 +6,7 @@ import { IoMdBasket, IoIosBriefcase } from "react-icons/io";
 import { TbCube } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
 import Footer from "../../Common/Footer/footer";
+import LineChart from "../../Common/Charts/lineChart";
 
 const Home = () => {
   const [HandleSidePanel, setHandleSidePanel] = useState("");
@@ -284,7 +285,8 @@ const Home = () => {
                           </div>
                           <div className="row my-3">
                             <div className="col-sm-12">
-                              <div className="sales-chart-height">
+                              <LineChart/>
+                              {/* <div className="sales-chart-height">
                                 <div className="chartjs-size-monitor">
                                   <div className="chartjs-size-monitor-expand">
                                     <div className="" />
@@ -303,7 +305,7 @@ const Home = () => {
                                   }}
                                   className="chartjs-render-monitor"
                                 />
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                           <div className="row">
