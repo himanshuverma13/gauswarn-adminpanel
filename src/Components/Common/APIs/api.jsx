@@ -77,4 +77,31 @@ export const AddProductAPI = async (payload) => {
   }
 };
 
-//  ---------- User API --------------------------------
+//  ---------- Login & Register API --------------------------------
+export const LoginAPI = async (payload) => {
+  try {
+    const response = await axios.post(`${URL}/login`,payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+export const RegisterAPI = async (payload) => {
+  try {
+    const response = await axios.post(`${URL}/register`,payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+

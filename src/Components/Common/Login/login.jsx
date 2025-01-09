@@ -1,9 +1,10 @@
-import React from 'react';
-import { useForm } from 'react-hook-form'; // React Hook Form
+import React from "react";
+import { useForm } from "react-hook-form"; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
+import { LoginAPI } from "../APIs/api";
 const UserLogin = () => {
   const {
     register,
@@ -12,10 +13,28 @@ const UserLogin = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    reset();
-    console.log('Form Data:', data);
-    // Handle login logic here
+  const navigate = useNavigate()
+
+  const onSubmit = async(data) => {
+    try {
+      const payload = {
+        email:data?.username ,
+        password:data?.password ,
+      };
+      const response = await LoginAPI(payload);
+      console.log('response: ', response);
+      reset();
+      if(response?.success == true){
+        localStorage.setItem('userDetails', JSON.stringify(response));
+       navigate('/')
+      }
+      else{
+        alert('Invalid Credentials')
+      }
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
   };
 
   return (
@@ -29,9 +48,9 @@ const UserLogin = () => {
                   <div className="col-lg-6 d-flex align-items-center justify-content-center">
                     <div className="auth-form-transparent shadow text-left p-3">
                       <div className="brand-logo mb-3 d-flex justify-content-center">
-                        <img src={Logo} className='admin-Logo' alt="logo" />
+                        <img src={Logo} className="admin-Logo" alt="logo" />
                       </div>
-                      <h2 className='text-center text-uppercase'>Login</h2>
+                      <h2 className="text-center text-uppercase">Login</h2>
                       <form className="pt-3" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <label>Email / Mobile Number</label>
@@ -43,14 +62,19 @@ const UserLogin = () => {
                             </div>
                             <input
                               type="text"
-                              className={`form-control form-control-lg border-left-0 ${errors.username ? 'is-invalid' : ''
-                                }`}
+                              className={`form-control form-control-lg border-left-0 ${
+                                errors.username ? "is-invalid" : ""
+                              }`}
                               placeholder="Email / Mobile Number"
-                              {...register('username', { required: 'Email / Mobile Number is required' })}
+                              {...register("username", {
+                                required: "Email / Mobile Number is required",
+                              })}
                             />
                           </div>
                           {errors.username && (
-                            <div className="text-danger mt-1">{errors.username.message}</div>
+                            <div className="text-danger mt-1">
+                              {errors.username.message}
+                            </div>
                           )}
                         </div>
                         <div className="form-group">
@@ -63,14 +87,19 @@ const UserLogin = () => {
                             </div>
                             <input
                               type="password"
-                              className={`form-control form-control-lg border-left-0 ${errors.password ? 'is-invalid' : ''
-                                }`}
+                              className={`form-control form-control-lg border-left-0 ${
+                                errors.password ? "is-invalid" : ""
+                              }`}
                               placeholder="Password"
-                              {...register('password', { required: 'Password is required' })}
+                              {...register("password", {
+                                required: "Password is required",
+                              })}
                             />
                           </div>
                           {errors.password && (
-                            <div className="text-danger mt-1">{errors.password.message}</div>
+                            <div className="text-danger mt-1">
+                              {errors.password.message}
+                            </div>
                           )}
                         </div>
                         <div className="my-1 d-flex justify-content-center align-items-center">
@@ -87,10 +116,8 @@ const UserLogin = () => {
                           </button>
                         </div>
                         <div className="text-center mt-4 font-weight-light mb-2">
-                          Don't have an account?{' '}
-                          <NavLink to="/register"
-                            className="text-primary"
-                          >
+                          Don't have an account?{" "}
+                          <NavLink to="/register" className="text-primary">
                             Create
                           </NavLink>
                         </div>
