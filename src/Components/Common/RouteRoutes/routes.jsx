@@ -24,8 +24,6 @@ const RouteRoutes = () => {
           <Route path="/contact-info" element={<Contactinfo />}></Route>
           <Route path="/user-info" element={<UserInfo />}></Route>
           <Route path="/forgot" element={<Forgot />}></Route>
-          
-
         </Routes>
       </Router>
     </>
