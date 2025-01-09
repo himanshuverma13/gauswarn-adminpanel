@@ -15,11 +15,10 @@ const ProductDetailCards = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [currentPrdId, setcurrentPrdId] = useState();
 
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const { register, handleSubmit, setValue, watch, reset } = useForm();
 
   const fetchProducts = async () => {
     const response = await GetProductAPI();
-    // console.log('response?.products: ', response?.products);
     setProductDetails(response?.products);
   };
 
@@ -35,24 +34,25 @@ const ProductDetailCards = () => {
     setValue("product_stock", "");
     setValue("product_category", "");
     setValue("product_image", "");
+    reset();
     setIsEdit(false);
     setCurrentProductIndex(null);
-    reset();
     setModalOpen(true);
   };
 
+  const SetImage = watch("product_image")
+
   const openEditModal = (product, index) => {
     if (product) {
-      // console.log('productDetails: ', productDetails);
-      const id =  productDetails?.filter((i)=>{
-        // i?.product_id  
-        console.log('i?.product_id: ', i?.product_id);
-      })
-      
-      console.log('id: ', id);
       setIsEdit(true);
       setCurrentProductIndex(index);
-      reset(product);
+      setValue("product_name", product?.product_name);
+      setValue("product_description", product?.product_description);
+      setValue("product_price", product?.product_price);
+      setValue("product_quantity", product?.product_quantity);
+      setValue("product_stock", product?.product_stock);
+      setValue("product_category", product?.product_category);
+      setValue("product_image", product?.product_image);
     }
     setModalOpen(true);
   };
@@ -74,7 +74,7 @@ const ProductDetailCards = () => {
         const updatedProducts = [...productDetails];
         updatedProducts[currentProductIndex] = { ...data };
         setProductDetails(updatedProducts);
-        const response = await UpdateProductAPI(data?.product_id, data);
+        const response = await UpdateProductAPI(productDetails[currentProductIndex]?.product_id, data);
         console.log("response: ", response);
         fetchProducts();
       } else {
@@ -116,7 +116,7 @@ const ProductDetailCards = () => {
         <div className="container-fluid page-body-wrapper">
           <div className="row product-item-wrapper mx-2 mt-3 w-100">
             {productDetails?.map((item, index) => (
-              <div className="col-lg-4 col-md-6 product-item mb-3" key={index}>
+              <div className="col-lg-4 col-md-6 product-item mb-3" key={item?.product_id}>
                 <div className="card shadow">
                   <div className="card-body">
                     <div className="product-img-outer">
@@ -231,7 +231,9 @@ const ProductDetailCards = () => {
                       />
                     </div>
                     <div className="form-group col-lg-12">
-                      {/* <img src={} alt="" /> */}
+                      {SetImage && 
+                      <img src={SetImage} width={100} height={100} alt="" />
+                      }
                       <label>Image</label>
                       <input
                         type="file"
