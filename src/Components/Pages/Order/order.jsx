@@ -25,7 +25,7 @@ const Order = () => {
             <Navbar handleSidepanel={handleSidePanel} />
             <div className="main-panel w-100">
               <OrderDetails/>
-              <Footer/>
+              {/* <Footer/> */}
             </div>
           </div>
         </div>

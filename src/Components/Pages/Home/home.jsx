@@ -25,14 +25,14 @@ const Home = () => {
             <div className="main-panel w-100">
               <div className="content-wrapper">
                 <div>
-                  <div className="page-header flex-wrap">
-                    <h3 className="mb-0">
+                  <div className="page-header d-flex justify-content-between">
+                    <h3>
                       Hi, welcome back!{" "}
-                      <span className="pl-0 h6 pl-sm-2 text-muted d-inline-block">
-                        Your web analytics dashboard template.
-                      </span>
                     </h3>
-                    <div className="d-flex">
+                    <h6 className="text-muted d-inline-block">
+                        Your web analytics dashboard template.
+                      </h6>
+                    {/* <div className="d-flex">
                       <button
                         type="button"
                         className="btn btn-sm bg-white btn-icon-text border mr-0"
@@ -52,7 +52,7 @@ const Home = () => {
                         {" "}
                         Add User
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="row">
                     <div className="col-xl-3 col-lg-12 stretch-card grid-margin">
@@ -146,7 +146,7 @@ const Home = () => {
                     <div className="col-xl-9 stretch-card grid-margin">
                       <div className="card">
                         <div className="card-body">
-                          <div className="row">
+                          {/* <div className="row">
                             <div className="col-sm-7">
                               <h5>Business Survey</h5>
                               <p className="text-muted">
@@ -168,10 +168,10 @@ const Home = () => {
                                 Download Report
                               </button>
                             </div>
-                          </div>
+                          </div> */}
                           <div className="row">
                             <div className="col-sm-4">
-                              <div className="card mb-3 mb-sm-0">
+                              <div className="card mb-3 mb-sm-0 shadow">
                                 <div className="card-body py-3 px-4">
                                   <p className="m-0 survey-head">
                                     Today Earnings
@@ -208,7 +208,7 @@ const Home = () => {
                               </div>
                             </div>
                             <div className="col-sm-4">
-                              <div className="card mb-3 mb-sm-0">
+                              <div className="card mb-3 mb-sm-0 shadow">
                                 <div className="card-body py-3 px-3">
                                   <p className="m-0 survey-head">
                                     Product Sold
@@ -246,7 +246,7 @@ const Home = () => {
                             </div>
                             <div className="col-sm-4">
                               <div className="card">
-                                <div className="card-body py-3 px-3">
+                                <div className="card-body py-3 px-3 shadow">
                                   <p className="m-0 survey-head">
                                     Today Orders
                                   </p>

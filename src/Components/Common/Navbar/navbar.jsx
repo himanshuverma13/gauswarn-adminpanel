@@ -8,8 +8,11 @@ import img3 from "../../Assets/images/faces/face2.jpg";
 import img4 from "../../Assets/images/faces/face1.jpg";
 
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoIosNotifications } from "react-icons/io";
-import { MdOutlineEmail } from "react-icons/md";
+// import { IoIosNotifications } from "react-icons/io";
+// import { MdOutlineEmail } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+
 
 const Navbar = ({ handleSidepanel }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -37,132 +40,6 @@ const Navbar = ({ handleSidepanel }) => {
             <GiHamburgerMenu className="nav-icon" />
           </button>
           <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link count-indicator dropdown-toggle"
-                id="notificationDropdown"
-                href="#"
-                data-toggle="dropdown"
-              >
-                <IoIosNotifications className="nav-icon" />
-                <span className="count count-varient1">7</span>
-              </a>
-              <div
-                className="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
-                aria-labelledby="notificationDropdown"
-              >
-                <h6 className="p-3 mb-0">Notifications</h6>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <img src={img1} alt="" className="profile-pic" />
-                  </div>
-                  <div className="preview-item-content">
-                    <p className="mb-0">
-                      {" "}
-                      Dany Miles{" "}
-                      <span className="text-small text-muted">
-                        commented on your photo
-                      </span>
-                    </p>
-                  </div>
-                </a>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <img src={img2} alt="" className="profile-pic" />
-                  </div>
-                  <div className="preview-item-content">
-                    <p className="mb-0">
-                      {" "}
-                      James{" "}
-                      <span className="text-small text-muted">
-                        posted a photo on your wall
-                      </span>
-                    </p>
-                  </div>
-                </a>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <img src={img3} alt="" className="profile-pic" />
-                  </div>
-                  <div className="preview-item-content">
-                    <p className="mb-0">
-                      {" "}
-                      Alex{" "}
-                      <span className="text-small text-muted">
-                        just mentioned you in his post
-                      </span>
-                    </p>
-                  </div>
-                </a>
-                <div className="dropdown-divider" />
-                <p className="p-3 mb-0">View all activities</p>
-              </div>
-            </li>
-            <li className="nav-item dropdown d-none d-sm-flex">
-              <a
-                className="nav-link count-indicator dropdown-toggle"
-                id="messageDropdown"
-                href="#"
-                data-toggle="dropdown"
-              >
-                <div className="nav-icon">
-                <MdOutlineEmail />
-                </div>
-                <span className="count count-varient2">5</span>
-              </a>
-              <div
-                className="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
-                aria-labelledby="messageDropdown"
-              >
-                <h6 className="p-3 mb-0">Messages</h6>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-item-content flex-grow">
-                    <span className="badge badge-pill badge-success">
-                      Request
-                    </span>
-                    <p className="text-small text-muted ellipsis mb-0">
-                      {" "}
-                      Suport needed for user123{" "}
-                    </p>
-                  </div>
-                  <p className="text-small text-muted align-self-start">
-                    {" "}
-                    4:10 PM{" "}
-                  </p>
-                </a>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-item-content flex-grow">
-                    <span className="badge badge-pill badge-warning">
-                      Invoices
-                    </span>
-                    <p className="text-small text-muted ellipsis mb-0">
-                      {" "}
-                      Invoice for order is mailed{" "}
-                    </p>
-                  </div>
-                  <p className="text-small text-muted align-self-start">
-                    {" "}
-                    4:10 PM{" "}
-                  </p>
-                </a>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-item-content flex-grow">
-                    <span className="badge badge-pill badge-danger">
-                      Projects
-                    </span>
-                    <p className="text-small text-muted ellipsis mb-0">
-                      {" "}
-                      New project will start tomorrow{" "}
-                    </p>
-                  </div>
-                  <p className="text-small text-muted align-self-start">
-                    {" "}
-                    4:10 PM{" "}
-                  </p>
-                </a>
-                <h6 className="p-3 mb-0">See all activity</h6>
-              </div>
-            </li>
             <li className="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex">
               <form className="nav-link form-inline mt-2 mt-md-0">
                 <div className="input-group">
@@ -173,7 +50,7 @@ const Navbar = ({ handleSidepanel }) => {
                   />
                   <div className="input-group-append">
                     <span className="input-group-text">
-                      <i className="mdi mdi-magnify" />
+                    <FaSearch/>
                     </span>
                   </div>
                 </div>
@@ -181,7 +58,7 @@ const Navbar = ({ handleSidepanel }) => {
             </li>
           </ul>
           <ul className="navbar-nav navbar-nav-right ml-lg-auto">
-            <li className="nav-item dropdown d-none d-xl-flex border-0">
+            {/* <li className="nav-item dropdown d-none d-xl-flex border-0">
               <a
                 className="nav-link dropdown-toggle"
                 id="languageDropdown"
@@ -211,7 +88,7 @@ const Navbar = ({ handleSidepanel }) => {
                   Japanese{" "}
                 </a>
               </div>
-            </li>
+            </li> */}
             <li className="nav-item nav-profile dropdown border-0">
               <a
                 className="nav-link dropdown-toggle"

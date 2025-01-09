@@ -2,12 +2,14 @@ import React from "react";
 
 import { FaHome, FaLock, FaCartArrowDown, FaIdCard, FaClipboardCheck, FaClipboardList } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
-import { MdWidgets } from "react-icons/md";
+import { MdWidgets, MdContactPhone } from "react-icons/md";
 import { Link, Links, useLocation } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 
+
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
+import Avatar from "../../Assets/images/logo/avtar24.png";
 const Sidebar = () => {
   const location = useLocation();
   console.log("location : ", location?.pathname);
@@ -26,7 +28,7 @@ const Sidebar = () => {
             href="index.html"
           >
             <img
-              src="/demo/breeze/react/template/demo_1/preview/static/media/logo-mini.f54f105e.svg"
+              src={Logo}
               alt="logo"
             />
           </a>
@@ -36,7 +38,7 @@ const Sidebar = () => {
             <a href="!#" className="nav-link">
               <div className="nav-profile-image">
                 <img
-                  src="/demo/breeze/react/template/demo_1/preview/static/media/face1.c80e465a.jpg"
+                  src={Avatar}
                   alt="profile"
                 />
                 <span className="login-status online" />{" "}
@@ -44,12 +46,6 @@ const Sidebar = () => {
               <div className="nav-profile-text d-flex align-items-center">
                 <div className="pr-3">
                   <div className="font-weight-medium mb-2">Henry Klein</div>
-                  <div>$8,753.00</div>
-                </div>
-                <div>
-                  <span className="badge badge-danger text-white rounded">
-                    3
-                  </span>
                 </div>
               </div>
             </a>
@@ -59,22 +55,6 @@ const Sidebar = () => {
             <Link className="nav-link" to={"/"}>
               <FaHome className="menu-icon" />
               <span className="menu-title">Dashboard</span>
-            </Link>
-          </li>
-          <li className="nav-item menu-items">
-            <Link to={""}
-              className="nav-link"
-            >
-              <i className="mdi mdi-translate menu-icon" />
-              <span className="menu-title">RTL</span>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={""}
-              className="nav-link"
-            >
-              <MdWidgets className="menu-icon" />
-              <span className="menu-title">Widgets</span>
             </Link>
           </li>
           <li
@@ -96,19 +76,17 @@ const Sidebar = () => {
             </Link>
           </li>
           <li
-            className={`nav-item ${
-              location?.pathname == "/contact-info" ? "active" : ""
-            }`}
+            className={`nav-item ${location?.pathname == "/contact-info" ? "active" : ""
+              }`}
           >
             <Link className="nav-link" to={"/contact-info"}>
-              <FaIdCard className="menu-icon" />
+              <MdContactPhone className="menu-icon" />
               <span className="menu-title">Contact Info</span>
             </Link>
           </li>
           <li
-            className={`nav-item ${
-              location?.pathname == "/user-info" ? "active" : ""
-            }`}
+            className={`nav-item ${location?.pathname == "/user-info" ? "active" : ""
+              }`}
           >
             <Link className="nav-link" to={"/user-info"}>
               <FaIdCard className="menu-icon" />
@@ -146,7 +124,7 @@ const Sidebar = () => {
             }`}>
             <Link to={"/login"} className="nav-link">
               <BiLogOut className="menu-icon" />
-              <span className=" text-white menu-title">LOGOUT</span>
+              <span className="text-white menu-title bg-primary py-2 px-3 rounded">LOGOUT</span>
             </Link>
           </li>
         </ul>
