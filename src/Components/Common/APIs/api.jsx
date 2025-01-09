@@ -6,9 +6,12 @@ const URL = process.env.REACT_APP_API;
 
 export const FeedbackAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/allfeedback`,
-
-    );
+    const response = await axios.get(`${URL}/allfeedback`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
     return response?.data?.reviews;
   } catch (error) {
     console.log("error: ", error);
@@ -18,7 +21,7 @@ export const FeedbackAPI = async () => {
 //  ---------- Product CRUD API --------------------------------
 export const GetProductAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/getAllProduct`,{
+    const response = await axios.get(`${URL}/getAllProduct`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -29,15 +32,19 @@ export const GetProductAPI = async () => {
     console.log("error: ", error);
   }
 };
-export const UpdateProductAPI = async (id,payload) => {
-  console.log('id,payload: ', id,payload);
+export const UpdateProductAPI = async (id, payload) => {
+  console.log("id,payload: ", id, payload);
   try {
-    const response = await axios.post(`${URL}/updateProductById/${id}`,payload,{
-      headers: {
-        "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "69420",
-      },
-    });
+    const response = await axios.post(
+      `${URL}/updateProductById/${id}`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+        },
+      }
+    );
     return response?.data;
   } catch (error) {
     console.log("error: ", error);
@@ -45,20 +52,20 @@ export const UpdateProductAPI = async (id,payload) => {
 };
 export const DeleteProductAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/deleteProductById/${payload}`,{
+    const response = await axios.post(`${URL}/deleteProductById/${payload}`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
       },
     });
-    return response?.data
+    return response?.data;
   } catch (error) {
     console.log("error: ", error);
   }
 };
 export const AddProductAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/createproduct`, payload,{
+    const response = await axios.post(`${URL}/createproduct`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
