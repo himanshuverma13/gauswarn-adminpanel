@@ -1,5 +1,7 @@
 import React from "react";
 
+import { RiDeleteBin6Fill } from "react-icons/ri";
+
 const OrderDetails = () => {
   return (
     <div className="content-wrapper p-3">
@@ -79,8 +81,8 @@ const OrderDetails = () => {
                               </td>
                               <td>
                                 <div>
-                                  <button className="btn btn-light">
-                                    <i className="mdi mdi-close text-danger" />
+                                  <button className="btn btn-light d-flex align-items-center">
+                                    <RiDeleteBin6Fill className="text-danger" />
                                     Remove
                                   </button>
                                 </div>
@@ -99,8 +101,8 @@ const OrderDetails = () => {
                               </td>
                               <td>
                                 <div>
-                                  <button className="btn btn-light">
-                                    <i className="mdi mdi-close text-danger" />
+                                  <button className="btn btn-light d-flex align-items-center">
+                                    <RiDeleteBin6Fill  className="text-danger"/>
                                     Remove
                                   </button>
                                 </div>

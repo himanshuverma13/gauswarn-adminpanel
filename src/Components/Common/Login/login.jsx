@@ -1,8 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form'; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+// Images
+import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 const UserLogin = () => {
   const {
     register,
@@ -27,11 +28,10 @@ const UserLogin = () => {
                 <div className="row flex-grow">
                   <div className="col-lg-6 d-flex align-items-center justify-content-center">
                     <div className="auth-form-transparent shadow text-left p-3">
-                      <div className="brand-logo">
-                        <img src="" alt="logo" />
+                      <div className="brand-logo mb-3 d-flex justify-content-center">
+                        <img src={Logo} className='admin-Logo' alt="logo" />
                       </div>
-                      <h4>Welcome back!</h4>
-                      <h6 className="font-weight-light">Happy to see you again!</h6>
+                      <h2 className='text-center text-uppercase'>Login</h2>
                       <form className="pt-3" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <label>Email / Mobile Number</label>
@@ -74,9 +74,9 @@ const UserLogin = () => {
                           )}
                         </div>
                         <div className="my-1 d-flex justify-content-center align-items-center">
-                          <a href="#!" className="auth-link text-black">
+                          <Link to={"/forgot"} className="auth-link text-black">
                             Forgot password?
-                          </a>
+                          </Link>
                         </div>
                         <div className="my-3">
                           <button
@@ -86,7 +86,7 @@ const UserLogin = () => {
                             LOGIN
                           </button>
                         </div>
-                        <div className="text-center mt-4 font-weight-light">
+                        <div className="text-center mt-4 font-weight-light mb-2">
                           Don't have an account?{' '}
                           <NavLink to="/register"
                             className="text-primary"

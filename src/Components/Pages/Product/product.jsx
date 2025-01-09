@@ -19,7 +19,7 @@ const Product = () => {
                         <Navbar handleSidepanel={handleSidePanel} />
                         <div className="main-panel w-100">
                             <ProductdetailCards />
-                            <Footer />
+                            {/* <Footer /> */}
                         </div>
                     </div>
                 </div>
