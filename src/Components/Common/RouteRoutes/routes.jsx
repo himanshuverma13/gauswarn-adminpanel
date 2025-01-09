@@ -24,6 +24,11 @@ const RouteRoutes = () => {
           <Route path="/contact-info" element={<Contactinfo />}></Route>
           <Route path="/user-info" element={<UserInfo />}></Route>
           <Route path="/forgot" element={<Forgot />}></Route>
+<<<<<<< HEAD
+=======
+          
+
+>>>>>>> c9bfbde114fef26d4e2614072b7688d8538e6948
         </Routes>
       </Router>
     </>
