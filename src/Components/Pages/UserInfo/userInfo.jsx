@@ -21,7 +21,7 @@ const UserInfo = () => {
             <Navbar handleSidepanel={handleSidePanel} />
             <div className="main-panel w-100">
               <UserDetails/>
-              <Footer/>
+              {/* <Footer/> */}
             </div>
           </div>
         </div>
