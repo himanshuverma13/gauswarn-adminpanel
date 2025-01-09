@@ -36,6 +36,8 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
+=======
 
 .sidebar-hidden {
   transform: translateX(-100%);
@@ -50,3 +52,4 @@
 .sidebar-closed .sidebar {
   transform: translateX(-100%);
 }
+>>>>>>> c9bfbde114fef26d4e2614072b7688d8538e6948
