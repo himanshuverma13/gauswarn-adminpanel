@@ -4,7 +4,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 
 const OrderDetails = () => {
   return (
-    <div className="content-wrapper p-3">
+    <div className="content-wrapper">
       <div>
         <div className="row">
           <div className="col-12">

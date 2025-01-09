@@ -15,7 +15,7 @@ const Contactinfo = () => {
             >
                 <div className="container-scroller">
                     <Sidebar />
-                    <div className="container-fluid page-body-wrapper">
+                    <div className=" content-wrapper">
                         <Navbar handleSidepanel={handleSidePanel} />
                         <div className="main-panel w-100">
                     {/* <h1 className='text-center'>Customer Info</h1> */}
