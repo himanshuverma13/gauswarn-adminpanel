@@ -8,7 +8,7 @@ import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 const Forgot = () => {
   const [step, setStep] = useState(1); // Step 1: Input email/mobile, Step 2: Input OTP
   const [userData, setUserData] = useState(null); // To store user email/mobile temporarily
-  const { register, reset, handleSubmit, formState: { errors } } = useForm();
+  const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
 
   // Step 1: Send OTP
   const handleSendOtp = (data) => {
@@ -32,6 +32,18 @@ const Forgot = () => {
     }, 1000);
   };
 
+    // Step 3: Reset Password
+
+  const handleResetPassword = (data) => {
+    console.log("Resetting password:", data);
+    // Mock password reset (Replace this with your API call)
+    setTimeout(() => {
+      console.log("Password reset successfully!");
+      reset(); // Clear the form
+      alert("Your password has been reset successfully.");
+    }, 1000);
+  };
+
   return (
     <>
       <div className="container-fluid page-body-wrapper full-page-wrapper">
@@ -45,11 +57,11 @@ const Forgot = () => {
                       <div className="brand-logo mb-3 d-flex justify-content-center">
                         <img src={Logo} className="admin-Logo" alt="logo" />
                       </div>
-                      <h2 className='text-center text-uppercase mb-3'>{step === 1 ? "Forgot Password?" : "Verify OTP"}</h2>
-                     
+                      <h2 className='text-center text-uppercase mb-3'>{step === 1 ? "Forgot Password?" : step === 2 ? "Verify OTP" : "Reset Password"}</h2>
+
                       <form
                         className="pt-3"
-                        onSubmit={handleSubmit(step === 1 ? handleSendOtp : handleVerifyOtp)}
+                        onSubmit={handleSubmit(step === 1 ? handleSendOtp : step === 2 ? handleVerifyOtp : handleResetPassword)}
                       >
                         {step === 1 && (
                           <>
@@ -63,18 +75,14 @@ const Forgot = () => {
                                 </div>
                                 <input
                                   type="text"
-                                  className={`form-control form-control-lg border-left-0 ${
-                                    errors.username ? "is-invalid" : ""
-                                  }`}
+                                  className={`form-control form-control-lg border-left-0 ${errors.username ? "is-invalid" : ""}`}
                                   placeholder="Email / Mobile Number"
                                   {...register("username", {
                                     required: "Email / Mobile Number is required",
                                   })}
                                 />
                               </div>
-                              {errors.username && (
-                                <div className="text-danger mt-1">{errors.username.message}</div>
-                              )}
+                              {errors.username && <div className="text-danger mt-1">{errors.username.message}</div>}
                             </div>
                           </>
                         )}
@@ -91,16 +99,55 @@ const Forgot = () => {
                                 </div>
                                 <input
                                   type="text"
-                                  className={`form-control form-control-lg border-left-0 ${
-                                    errors.otp ? "is-invalid" : ""
-                                  }`}
+                                  className={`form-control form-control-lg border-left-0 ${errors.otp ? "is-invalid" : ""}`}
                                   placeholder="Enter OTP"
                                   {...register("otp", { required: "OTP is required" })}
                                 />
                               </div>
-                              {errors.otp && (
-                                <div className="text-danger mt-1">{errors.otp.message}</div>
-                              )}
+                              {errors.otp && <div className="text-danger mt-1">{errors.otp.message}</div>}
+                            </div>
+                          </>
+                        )}
+
+                        {step === 3 && (
+                          <>
+                            <div className="form-group">
+                              <label>New Password</label>
+                              <div className="input-group">
+                                <div className="input-group-prepend bg-transparent">
+                                  <span className="input-group-text bg-transparent border-right-0 rounded-0">
+                                    <FaLock className="text-primary fw-bold" />
+                                  </span>
+                                </div>
+                                <input
+                                  type="password"
+                                  className={`form-control form-control-lg border-left-0 ${errors.password ? "is-invalid" : ""}`}
+                                  placeholder="Enter new password"
+                                  {...register("password", { required: "Password is required" })}
+                                />
+                              </div>
+                              {errors.password && <div className="text-danger mt-1">{errors.password.message}</div>}
+                            </div>
+
+                            <div className="form-group">
+                              <label>Confirm Password</label>
+                              <div className="input-group">
+                                <div className="input-group-prepend bg-transparent">
+                                  <span className="input-group-text bg-transparent border-right-0 rounded-0">
+                                    <FaLock className="text-primary fw-bold" />
+                                  </span>
+                                </div>
+                                <input
+                                  type="password"
+                                  className={`form-control form-control-lg border-left-0 ${errors.confirmPassword ? "is-invalid" : ""}`}
+                                  placeholder="Confirm new password"
+                                  {...register("confirmPassword", {
+                                    required: "Confirm password is required",
+                                    validate: (value) => value === watch("password") || "Passwords do not match",
+                                  })}
+                                />
+                              </div>
+                              {errors.confirmPassword && <div className="text-danger mt-1">{errors.confirmPassword.message}</div>}
                             </div>
                           </>
                         )}
@@ -110,9 +157,10 @@ const Forgot = () => {
                             type="submit"
                             className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                           >
-                            {step === 1 ? "Send OTP" : "Verify OTP"}
+                            {step === 1 ? "Send OTP" : step === 2 ? "Verify OTP" : "Reset Password"}
                           </button>
                         </div>
+
                         <div className="text-center mt-4 font-weight-light mb-2">
                           Don't have an account?{" "}
                           <NavLink to="/register" className="text-primary">
