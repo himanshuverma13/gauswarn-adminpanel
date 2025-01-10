@@ -125,20 +125,20 @@ const ProductDetailCards = () => {
             {productDetails?.map((item, index) => (
               <div className="col-lg-4 col-md-6 product-item mb-3" key={item?.product_id}>
                 <div class="card shadow" >
-                 <div className="card-product-img">
-                 <img 
-                    src={item?.product_image}
-                    alt="product" class=" border-bottom" />
-                 </div>
+                  <div className="card-product-img">
+                    <img
+                      src={item?.product_image}
+                      alt="product" class=" border-bottom" />
+                  </div>
                   <div class="p-3">
                     <h4 class="card-title text-uppercase font-weight-bold">{item?.product_name}</h4>
-                 <div className="d-flex justify-content-between align-items-center">
-                 <p className="font-weight-bold text-danger"> Price: {item?.product_price}</p>
-                 <p className="font-weight-bold">Quantity:-  {item?.product_quantity}</p>
-                 </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="font-weight-bold text-danger"> Price: {item?.product_price}</p>
+                      <p className="font-weight-bold">Quantity:-  {item?.product_quantity}</p>
+                    </div>
                     <div className="d-flex justify-content-between align-items-center font-weight-bold">
-                    <p className="text-muted">Category: {item?.product_category}</p>
-                    <p>Stock: {item?.product_stock}</p>
+                      <p className="text-muted">Category: {item?.product_category}</p>
+                      <p>Stock: {item?.product_stock}</p>
                     </div>
                     <hr className="my-0 mb-2" />
 
@@ -218,11 +218,11 @@ const ProductDetailCards = () => {
 
         {/* Add/Edit Modal */}
         {modalOpen && (
-          <div className="modal show d-block" tabIndex="-1" role="dialog">
+          <div className="modal show d-block " tabIndex="-1" role="dialog">
             <div className="modal-dialog" role="document">
-              <div className="modal-content">
+              <div className="modal-content px-3">
                 <div className="modal-header">
-                  <h5 className="modal-title">
+                  <h5 className="modal-title font-weight-bold text-uppercase">
                     {isEdit ? "Edit Product" : "Add Product"}
                   </h5>
                   <button
@@ -236,30 +236,30 @@ const ProductDetailCards = () => {
                 <div className="modal-body">
                   <form className="row" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group col-lg-6">
-                      <label>Name</label>
+                      <label className="font-weight-bold text-uppercase">Name</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control shadow"
                         {...register("product_name", { required: true })}
                       />
                     </div>
                     <div className="form-group col-lg-6">
-                      <label>Description</label>
+                      <label className="font-weight-bold text-uppercase">Description</label>
                       <textarea
                         className="form-control"
                         {...register("product_description", { required: true })}
                       ></textarea>
                     </div>
                     <div className="form-group col-lg-6">
-                      <label>Price</label>
+                      <label className="font-weight-bold text-uppercase">Price</label>
                       <input
                         type="number"
-                        className="form-control"
+                        className="form-control shadow"
                         {...register("product_price", { required: true })}
                       />
                     </div>
                     <div className="form-group col-lg-6">
-                      <label>Quantity</label>
+                      <label className="font-weight-bold text-uppercase">Quantity</label>
                       <input
                         type="number"
                         className="form-control"
@@ -267,29 +267,38 @@ const ProductDetailCards = () => {
                       />
                     </div>
                     <div className="form-group col-lg-6">
-                      <label>Stock</label>
+                      <label className="font-weight-bold text-uppercase">Stock</label>
                       <input
                         type="number"
-                        className="form-control"
+                        className="form-control shadow"
                         {...register("product_stock", { required: true })}
                       />
                     </div>
                     <div className="form-group col-lg-6">
-                      <label>Category</label>
+                      <label className="font-weight-bold text-uppercase text-truncate">Category</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control shadow"
                         {...register("product_category", { required: true })}
                       />
                     </div>
+                    <div className="col-lg-6 mb-3">
+                      <label className="font-weight-bold text-uppercase">Select</label>
+                      <select class="form-select form-select-lg px-5 py-2 shadow" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">Raj Laxmi</option>
+                        <option value="2">GauSwarn</option>
+                        <option value="3">Both</option>
+                      </select>
+                    </div>
                     <div className="form-group col-lg-12">
                       {SetImage &&
-                        <img src={SetImage} width={100} height={100} alt="" />
+                        <img src={SetImage} width={100} height={100} alt="Loading" />
                       }
-                      <label>Image</label>
+                      <label className="font-weight-bold text-uppercase">Image</label>
                       <input
                         type="file"
-                        className="form-control"
+                        className="form-control shadow"
                         accept="image/*"
                         onChange={(event) =>
                           handleImageUpload(event, (base64) =>
