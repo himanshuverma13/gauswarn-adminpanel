@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import { ForgotAPI, ResetAPI } from '../APIs/api'; // Import APIs
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 
@@ -11,37 +12,65 @@ const Forgot = () => {
   const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
 
   // Step 1: Send OTP
-  const handleSendOtp = (data) => {
+  const handleSendOtp = async (data) => {
     setUserData(data); // Store user data temporarily
     console.log("Sending OTP to:", data);
-    // Mock sending OTP (Replace this with your API call)
-    setTimeout(() => {
-      console.log("OTP sent successfully!");
-      setStep(2); // Move to OTP verification step
-    }, 1000);
+
+    try {
+      const response = await ForgotAPI.sendOtp(data);
+      console.log('response: ', response);
+      if (response.success) {
+        console.log("OTP sent successfully!", response.message);
+        setStep(2); // Move to OTP verification step
+      } else {
+        alert(response.message || "Failed to send OTP.");
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      alert("An error occurred while sending OTP.");
+    }
   };
 
   // Step 2: Verify OTP
-  const handleVerifyOtp = (data) => {
+  const handleVerifyOtp = async (data) => {
     console.log("Verifying OTP:", data);
-    // Mock OTP verification (Replace this with your API call)
-    setTimeout(() => {
-      console.log("OTP verified successfully!");
-      reset(); // Clear the form
-      alert("OTP verified. You can now reset your password.");
-    }, 1000);
+
+    try {
+      const response = await ForgotAPI.verifyOtp({ ...userData, otp: data.otp });
+      if (response.success) {
+        console.log("OTP verified successfully!");
+        alert(response.message || "OTP verified. You can now reset your password.");
+        setStep(3); // Move to password reset step
+      } else {
+        alert(response.message || "Failed to verify OTP.");
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      alert("An error occurred while verifying OTP.");
+    }
   };
 
-    // Step 3: Reset Password
-
-  const handleResetPassword = (data) => {
+  // Step 3: Reset Password
+  const handleResetPassword = async (data) => {
     console.log("Resetting password:", data);
-    // Mock password reset (Replace this with your API call)
-    setTimeout(() => {
-      console.log("Password reset successfully!");
-      reset(); // Clear the form
-      alert("Your password has been reset successfully.");
-    }, 1000);
+
+    try {
+      const response = await ResetAPI.resetPassword({ 
+        ...userData, 
+        password: data.password 
+      });
+      if (response.success) {
+        console.log("Password reset successfully!");
+        alert(response.message || "Your password has been reset successfully.");
+        reset(); // Clear the form
+        setStep(1); // Reset to the initial step
+      } else {
+        alert(response.message || "Failed to reset password.");
+      }
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      alert("An error occurred while resetting your password.");
+    }
   };
 
   return (
@@ -64,49 +93,43 @@ const Forgot = () => {
                         onSubmit={handleSubmit(step === 1 ? handleSendOtp : step === 2 ? handleVerifyOtp : handleResetPassword)}
                       >
                         {step === 1 && (
-                          <>
-                            <div className="form-group">
-                              <label>Email / Mobile Number</label>
-                              <div className="input-group">
-                                <div className="input-group-prepend bg-transparent">
-                                  <span className="input-group-text bg-transparent border-right-0 rounded-0">
-                                    <FaRegUser className="text-primary fw-bold" />
-                                  </span>
-                                </div>
-                                <input
-                                  type="text"
-                                  className={`form-control form-control-lg border-left-0 ${errors.username ? "is-invalid" : ""}`}
-                                  placeholder="Email / Mobile Number"
-                                  {...register("username", {
-                                    required: "Email / Mobile Number is required",
-                                  })}
-                                />
+                          <div className="form-group">
+                            <label>Email / Mobile Number</label>
+                            <div className="input-group">
+                              <div className="input-group-prepend bg-transparent">
+                                <span className="input-group-text bg-transparent border-right-0 rounded-0">
+                                  <FaRegUser className="text-primary fw-bold" />
+                                </span>
                               </div>
-                              {errors.username && <div className="text-danger mt-1">{errors.username.message}</div>}
+                              <input
+                                type="text"
+                                className={`form-control form-control-lg border-left-0 ${errors.username ? "is-invalid" : ""}`}
+                                placeholder="Email / Mobile Number"
+                                {...register("username", { required: "Email / Mobile Number is required" })}
+                              />
                             </div>
-                          </>
+                            {errors.username && <div className="text-danger mt-1">{errors.username.message}</div>}
+                          </div>
                         )}
 
                         {step === 2 && (
-                          <>
-                            <div className="form-group">
-                              <label>OTP</label>
-                              <div className="input-group">
-                                <div className="input-group-prepend bg-transparent">
-                                  <span className="input-group-text bg-transparent border-right-0 rounded-0">
-                                    <FaLock className="text-primary fw-bold" />
-                                  </span>
-                                </div>
-                                <input
-                                  type="text"
-                                  className={`form-control form-control-lg border-left-0 ${errors.otp ? "is-invalid" : ""}`}
-                                  placeholder="Enter OTP"
-                                  {...register("otp", { required: "OTP is required" })}
-                                />
+                          <div className="form-group">
+                            <label>OTP</label>
+                            <div className="input-group">
+                              <div className="input-group-prepend bg-transparent">
+                                <span className="input-group-text bg-transparent border-right-0 rounded-0">
+                                  <FaLock className="text-primary fw-bold" />
+                                </span>
                               </div>
-                              {errors.otp && <div className="text-danger mt-1">{errors.otp.message}</div>}
+                              <input
+                                type="text"
+                                className={`form-control form-control-lg border-left-0 ${errors.otp ? "is-invalid" : ""}`}
+                                placeholder="Enter OTP"
+                                {...register("otp", { required: "OTP is required" })}
+                              />
                             </div>
-                          </>
+                            {errors.otp && <div className="text-danger mt-1">{errors.otp.message}</div>}
+                          </div>
                         )}
 
                         {step === 3 && (

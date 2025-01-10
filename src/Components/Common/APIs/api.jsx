@@ -105,6 +105,39 @@ export const RegisterAPI = async (payload) => {
   }
 };
 
+// -------------------------ForgotPasswprd & Reset API----------------------------------
+export const ForgotAPI = async (payload) => {
+  try {
+    const response = await axios.post(`${URL}/forgetPassword`,payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    console.log('response: ', response);
+    // return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+export const ResetAPI = async (payload) => {
+  try {
+    const response = await axios.post(`${URL}/reset`,payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    console.log('response: ', response);
+    // return response?.data;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+
+
 // ------------------User Info API---------------------------------------
 
 export const GetAllUser = async () => {
