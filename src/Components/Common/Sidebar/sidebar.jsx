@@ -16,8 +16,9 @@ const Sidebar = () => {
   return (
     <>
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
+        <div>
         <div className="text-center sidebar-brand-wrapper d-flex align-items-center">
-          <Link to={"/"} className="sidebar-brand brand-logo">
+          <Link to={"/home"} className="sidebar-brand brand-logo">
             <img
               src={Logo}
               alt="logo"
@@ -50,9 +51,9 @@ const Sidebar = () => {
               </div>
             </a>
           </li>
-          <li className={`nav-item ${location?.pathname == "/" ? "active" : ""
+          <li className={`nav-item ${location?.pathname == "/home" ? "active" : ""
             }`}>
-            <Link className="nav-link" to={"/"}>
+            <Link className="nav-link" to={"/home"}>
               <FaHome className="menu-icon" />
               <span className="menu-title">Dashboard</span>
             </Link>
@@ -128,6 +129,7 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
+        </div>
       </nav>
     </>
   );

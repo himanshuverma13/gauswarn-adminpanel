@@ -11,7 +11,6 @@ const UserDetails = () => {
   const FetchUserInfo = async () => {
     try {
       const response = await GetAllUser();
-      console.log("response: ", response);
       setUserInfo(response);
     } catch (error) {
       console.log("error: ", error);
@@ -25,12 +24,12 @@ const UserDetails = () => {
   // Pagination logic
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = UserInfo.slice(indexOfFirstUser, indexOfLastUser);
+  const currentUsers = UserInfo?.slice(indexOfFirstUser, indexOfLastUser);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Calculate total pages
-  const totalPages = Math.ceil(UserInfo.length / usersPerPage);
+  const totalPages = Math?.ceil(UserInfo?.length / usersPerPage);
 
   return (
     <div className="content-wrapper">
@@ -45,7 +44,7 @@ const UserDetails = () => {
                       <div className="react-bootstrap-table table-responsive">
                         <table className="table table-bordered">
                           <thead>
-                            <tr>
+                            <tr className="bg-primary text-white">
                               <th tabIndex={0} aria-label="Order # sort desc" className="sortable">
                                 ID #<span className="caret-4-desc" />
                               </th>
@@ -87,15 +86,15 @@ const UserDetails = () => {
                           <tbody>
                             {currentUsers?.map((items, index) => (
                               <tr key={index}>
-                                <td>{items.user_id}</td>
-                                <td>{items.user_name}</td>
-                                <td>{items.user_email}</td>
-                                <td>{items.user_mobile_num}</td>
-                                <td>{items.user_house_number} {", "} {items.user_landmark}</td>
-                                <td>{items.user_country}</td>
-                                <td>{items.user_state}</td>
-                                <td>{items.user_city}</td>
-                                <td>{items.user_pincode}</td>
+                                <td className="px-1 text-center">{items?.user_id}</td>
+                                <td className="px-1 text-center">{items?.user_name}</td>
+                                <td className="px-1 text-center">{items?.user_email}</td>
+                                <td className="px-1 text-center">{items?.user_mobile_num}</td>
+                                <td className="px-1 text-center">{items?.user_house_number} {", "} {items?.user_landmark}</td>
+                                <td className="px-1 text-center">{items?.user_country}</td>
+                                <td className="px-1 text-center">{items?.user_state}</td>
+                                <td className="px-1 text-center">{items?.user_city}</td>
+                                <td className="px-1 text-center">{items?.user_pincode}</td>
                                 <td>
                                   <div>
                                     <button className="btn btn-outline-danger d-flex align-items-center">
@@ -116,7 +115,7 @@ const UserDetails = () => {
                 {/* Pagination Controls */}
                 <div className="pagination mt-4 d-flex justify-content-center">
                   <ul className="pagination-list list-unstyled d-flex">
-                    {[...Array(totalPages)].map((_, index) => (
+                    {[...Array(totalPages || [])]?.map((_, index) => (
                       <li key={index + 1} className={`page-item mx-2 ${currentPage === index + 1 ? 'active' : ''}`}>
                         <button
                           onClick={() => paginate(index + 1)}

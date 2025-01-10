@@ -1,44 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../../Assets/css/testimonial.css";
 
-import second from "../../Assets/images/favicon.png";
 import { FeedbackAPI } from "../APIs/api";
 
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [Feedback, setFeedback] = useState();
-  const cards = [
-    {
-      title: "Card 1",
-      text: "This is card number 1.",
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      title: "Card 2",
-      text: "This is card number 2.",
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      title: "Card 3",
-      text: "This is card number 3.",
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      title: "Card 4",
-      text: "This is card number 4.",
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      title: "Card 5",
-      text: "This is card number 5.",
-      img: "https://via.placeholder.com/150",
-    },
-  ];
+
 
   const FetchFeedback = async () => {
     try {
       const response = await FeedbackAPI();
-      console.log("response: ", response);
       setFeedback(response);
     } catch (error) {
       console.log("error: ", error);
@@ -49,7 +21,7 @@ const TestimonialCarousel = () => {
     FetchFeedback();
   }, []);
 
-  const totalCards = cards.length;
+  const totalCards = Feedback?.length;
 
   // Function to go to the next set of cards
   const nextCard = () => {
@@ -87,11 +59,10 @@ const TestimonialCarousel = () => {
         </div>
         <div className="card-slider">
           <div
-            className="card-slider-inner py-2"
-            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+            className="card-slider-inner py-2 row"
           >
             {Feedback?.map((card, index) => (
-              <div className="card-wrapper" key={index}>
+              <div className="card-wrapper col-lg-4 my-4" key={index}>
                 <div className="card mb-3 h-100 shadow">
                   <div
                     className={`card-body feedback-card border-left border-${getRandomColor()}`}
@@ -110,14 +81,7 @@ const TestimonialCarousel = () => {
             ))}
           </div>
         </div>
-        <div className="my-4">
-        <button className="btn btn-primary me-2" onClick={prevCard}>
-          Prev
-        </button>
-        <button className="btn btn-primary" onClick={nextCard}>
-          Next
-        </button>
-        </div>
+       
       </div>
     </div>
   );

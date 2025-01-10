@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form"; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 import { LoginAPI } from "../APIs/api";
@@ -13,7 +13,6 @@ const UserLogin = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate()
 
   const onSubmit = async(data) => {
     try {
@@ -24,9 +23,9 @@ const UserLogin = () => {
       const response = await LoginAPI(payload);
       console.log('response: ', response);
       reset();
-      if(response?.success == true){
+      if(response?.success){
+        window.location ="/home" 
         localStorage.setItem('userDetails', JSON.stringify(response));
-       navigate('/')
       }
       else{
         alert('Invalid Credentials')
