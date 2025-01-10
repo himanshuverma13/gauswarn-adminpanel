@@ -58,63 +58,12 @@ const Navbar = ({ handleSidepanel }) => {
             </li>
           </ul>
           <ul className="navbar-nav navbar-nav-right ml-lg-auto">
-            {/* <li className="nav-item dropdown d-none d-xl-flex border-0">
-              <a
-                className="nav-link dropdown-toggle"
-                id="languageDropdown"
-                href="#"
-                data-toggle="dropdown"
-              >
-                <i className="mdi mdi-earth" /> English{" "}
-              </a>
-              <div
-                className="dropdown-menu navbar-dropdown"
-                aria-labelledby="languageDropdown"
-              >
-                <a className="dropdown-item" href="#">
-                  {" "}
-                  French{" "}
-                </a>
-                <a className="dropdown-item" href="#">
-                  {" "}
-                  Spain{" "}
-                </a>
-                <a className="dropdown-item" href="#">
-                  {" "}
-                  Latin{" "}
-                </a>
-                <a className="dropdown-item" href="#">
-                  {" "}
-                  Japanese{" "}
-                </a>
-              </div>
-            </li> */}
+            
+            <li>
+           
+            </li>
             <li className="nav-item nav-profile dropdown border-0">
-              <a
-                className="nav-link dropdown-toggle"
-                id="profileDropdown"
-                href="#"
-                data-toggle="dropdown"
-              >
-                <img
-                  className={img4}
-                  alt=""
-                  src="assets/images/faces/face1.jpg"
-                />
-                <span className="profile-name">Henry Klein</span>
-              </a>
-              <div
-                className="dropdown-menu navbar-dropdown w-100"
-                aria-labelledby="profileDropdown"
-              >
-                <a className="dropdown-item" href="#">
-                  <i className="mdi mdi-cached mr-2 text-success" /> Activity
-                  Log{" "}
-                </a>
-                <a className="dropdown-item" href="#">
-                  <i className="mdi mdi-logout mr-2 text-primary" /> Signout{" "}
-                </a>
-              </div>
+             <span className="fw-bold text-white ">ADMIN</span>
             </li>
           </ul>
           <button

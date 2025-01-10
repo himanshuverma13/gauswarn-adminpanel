@@ -15,8 +15,12 @@ const UserInfo = () => {
       <section
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
-        <div className="container-scroller">
+        {/* <div className="container-scroller"> */}
+          <div className="row">
+            <div className="col-lg-2">
           <Sidebar />
+            </div>
+            <div className="col-lg-10">
           <div className="container-fluid page-body-wrapper">
             <Navbar handleSidepanel={handleSidePanel} />
             <div className="main-panel w-100">
@@ -24,7 +28,10 @@ const UserInfo = () => {
               {/* <Footer/> */}
             </div>
           </div>
-        </div>
+
+            </div>
+          </div>
+        {/* </div> */}
       </section>
     </>
   );

@@ -30,7 +30,7 @@ const RouteRoutes = () => {
             </>
           ) : (
             <>
-              <Route path="/" element={<Home />}></Route>
+              <Route path="/home" element={<Home />}></Route>
               <Route path="/product" element={<Product />}></Route>
               <Route path="/order" element={<Order />}></Route>
               <Route path="/feedback" element={<Feedback />}></Route>
