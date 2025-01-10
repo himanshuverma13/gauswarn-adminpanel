@@ -7,7 +7,7 @@ import {
   UpdateProductAPI,
 } from "../APIs/api";
 
-import { toast } from "react-toastify"; 
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const ProductDetailCards = () => {
   const [productDetails, setProductDetails] = useState([]);
@@ -77,13 +77,13 @@ const ProductDetailCards = () => {
         updatedProducts[currentProductIndex] = { ...data };
         setProductDetails(updatedProducts);
         const response = await UpdateProductAPI(productDetails[currentProductIndex]?.product_id, data);
-        toast.success(response?.message); 
+        toast.success(response?.message);
         console.log("response: ", response);
         fetchProducts();
       } else {
         setProductDetails([...productDetails, data]);
         const response = await AddProductAPI(data);
-        toast.success(response?.data?.message); 
+        toast.success(response?.data?.message);
 
         console.log("response: ", response);
         fetchProducts();
@@ -96,9 +96,9 @@ const ProductDetailCards = () => {
 
   const confirmDelete = async () => {
     try {
-     const response =  await DeleteProductAPI(currentPrdId);
-     console.log('response : ', response );
-     toast.success(response?.message)
+      const response = await DeleteProductAPI(currentPrdId);
+      console.log('response : ', response);
+      toast.success(response?.message)
       // setProductDetails(updatedProducts);
       setDeleteConfirm(false);
       fetchProducts();
@@ -124,7 +124,47 @@ const ProductDetailCards = () => {
           <div className="row product-item-wrapper mx-2 mt-3 w-100">
             {productDetails?.map((item, index) => (
               <div className="col-lg-4 col-md-6 product-item mb-3" key={item?.product_id}>
-                <div className="card shadow">
+                <div class="card shadow" >
+                 <div className="card-product-img">
+                 <img 
+                    src={item?.product_image}
+                    alt="product" class=" border-bottom" />
+                 </div>
+                  <div class="p-3">
+                    <h4 class="card-title text-uppercase font-weight-bold">{item?.product_name}</h4>
+                 <div className="d-flex justify-content-between align-items-center">
+                 <p className="font-weight-bold text-danger"> Price: {item?.product_price}</p>
+                 <p className="font-weight-bold">Quantity:-  {item?.product_quantity}</p>
+                 </div>
+                    <div className="d-flex justify-content-between align-items-center font-weight-bold">
+                    <p className="text-muted">Category: {item?.product_category}</p>
+                    <p>Stock: {item?.product_stock}</p>
+                    </div>
+                    <hr className="my-0 mb-2" />
+
+                    <p class="card-text text-truncate">{item?.product_description}</p>
+                    <div className="d-flex my-2">
+                      <button
+                        className="btn btn-success px-3"
+                        onClick={() => openEditModal(item, index)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-primary px-3"
+                        onClick={() => {
+                          setCurrentProductIndex(index);
+                          setDeleteConfirm(true);
+                          setcurrentPrdId(item?.product_id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+                {/* <div className="card shadow">
                   <div className="card-body">
                     <div className="product-img-outer">
                       <img
@@ -133,23 +173,23 @@ const ProductDetailCards = () => {
                         alt="product"
                       />
                     </div>
-                    <h4 className="product-title">{item?.product_name}</h4>
+                    <h4 className="product-title text-uppercase">{item?.product_name}</h4>
                     <p className="product-price">
                       Price: {item?.product_price}
                     </p>
-                    <p className="product-actual-price">
-                      Stock: {item?.product_stock}
+                    <p className="product-actual-price font-weight-bold">
+                      Quantity:-  {item?.product_quantity}
                     </p>
                     <p className="product-description text-truncate">
                       {item?.product_description}
                     </p>
-                    {/* <p className="">
-                      {item?.product_quantity}
-                    </p> */}
-                    <p className="product-category">
+                    <p className="product-category font-weight-bolder">
                       Category: {item?.product_category}
                     </p>
-                    <div>
+                    <p className="font-weight-bold">
+                      Stock: {item?.product_stock}
+                    </p>
+                    <div className="d-flex my-2">
                       <button
                         className="btn btn-success px-3"
                         onClick={() => openEditModal(item, index)}
@@ -168,9 +208,11 @@ const ProductDetailCards = () => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             ))}
+
+
           </div>
         </div>
 
@@ -241,8 +283,8 @@ const ProductDetailCards = () => {
                       />
                     </div>
                     <div className="form-group col-lg-12">
-                      {SetImage && 
-                      <img src={SetImage} width={100} height={100} alt="" />
+                      {SetImage &&
+                        <img src={SetImage} width={100} height={100} alt="" />
                       }
                       <label>Image</label>
                       <input
