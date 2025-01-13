@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 import { RegisterAPI } from "../APIs/api";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   const {
@@ -32,6 +33,7 @@ const Registration = () => {
       };
       const response = await RegisterAPI(payload);
       console.log('response: ', response);
+       toast.success(response?.message)
       reset();
     } catch (error) {
       console.log("error: ", error);

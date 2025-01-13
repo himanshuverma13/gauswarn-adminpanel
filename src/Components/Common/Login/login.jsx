@@ -5,6 +5,7 @@ import { Link, NavLink} from "react-router-dom";
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 import { LoginAPI } from "../APIs/api";
+import { toast } from "react-toastify";
 const UserLogin = () => {
   const {
     register,
@@ -26,6 +27,7 @@ const UserLogin = () => {
       if(response?.success){
         window.location ="/home" 
         localStorage.setItem('userDetails', JSON.stringify(response));
+        toast.success(response?.message)
       }
       else{
         alert('Invalid Credentials')

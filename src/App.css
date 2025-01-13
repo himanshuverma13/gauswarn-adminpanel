@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -51,6 +52,12 @@
   transform: translateX(-100%);
 }
 
+/* ------------product ------------ */
+.card-product-img img {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+}
 /* --------- */
 .sidebar {
   position: fixed;
@@ -98,4 +105,15 @@
   height: 10px;
   border-radius: 50%;
   background-color: #28a745; /* Online status color */
+}
+
+/*  */
+.modal-content{
+  background: linear-gradient(180deg, #e6e5f2, #4599cd) !important;
+}
+.contact-card-bg{
+  background-color: #e6e5f2;
+}
+.modal{
+  background: rgba(0,0,0,0.8) !important;
 }
