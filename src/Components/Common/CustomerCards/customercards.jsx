@@ -20,6 +20,12 @@ const FetchContact = async () => {
     FetchContact();
   }, []);
 
+  const color = ["primary", "success", "danger", "warning"];
+  const getRandomColor = () => {
+    const randomIndex = Math.floor(Math?.random() * color?.length);
+    return color[randomIndex];
+  };
+
     return (
         <>
             <div className='container-fluid bg-white rounded'>
