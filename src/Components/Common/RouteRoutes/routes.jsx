@@ -22,13 +22,13 @@ const RouteRoutes = () => {
     <>
       <Router>
         <Routes>
-          {!UserLogins ? (
+          {/* {!UserLogins ? ( */}
             <>
               <Route path="/login" element={<UserLogin />}></Route>
               <Route path="/register" element={<Registration />}></Route>
               <Route path="/forgot" element={<Forgot />}></Route>
             </>
-          ) : (
+          {/* ) : ( */}
             <>
               <Route path="/home" element={<Home />}></Route>
               <Route path="/product" element={<Product />}></Route>
@@ -37,7 +37,7 @@ const RouteRoutes = () => {
               <Route path="/contact-info" element={<Contactinfo />}></Route>
               <Route path="/user-info" element={<UserInfo />}></Route>
             </>
-          )}
+          {/* )} */}
           <Route path="*" element={<UserLogin />} />
         </Routes>
       </Router>

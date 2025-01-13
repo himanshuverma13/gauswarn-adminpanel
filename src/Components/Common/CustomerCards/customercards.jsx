@@ -20,13 +20,19 @@ const FetchContact = async () => {
     FetchContact();
   }, []);
 
+  const color = ["primary", "success", "danger", "warning"];
+  const getRandomColor = () => {
+    const randomIndex = Math.floor(Math?.random() * color?.length);
+    return color[randomIndex];
+  };
+
     return (
         <>
             <div className='container-fluid'>
                 <div className='row mt-3'>
                     {Contact?.map((items, index) => (
                         <div className='col-lg-4 mb-3'>
-                            <div className="card shadow">
+                            <div className={`card shadow border-${getRandomColor()}`}>
                                 {/* <img
                                     className="card-img-top"
                                     src={CardsImg}
