@@ -8,7 +8,6 @@ import LineChart from "../../Common/Charts/lineChart";
 
 const Dashboard = () => {
   const [Weather, setWeather] = useState();
-  console.log("Weather: ", Weather?.forecast?.forecastday);
 
   const FetchDasboardData = async () => {
     try {
@@ -32,27 +31,7 @@ const Dashboard = () => {
             <h6 className="text-muted d-inline-block">
               Your web analytics dashboard template.
             </h6>
-            {/* <div className="d-flex">
-                      <button
-                        type="button"
-                        className="btn btn-sm bg-white btn-icon-text border mr-0"
-                      >
-                        <i className="mdi mdi-email btn-icon-prepend" /> Email{" "}
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm bg-white btn-icon-text border ml-3 mr-0"
-                      >
-                        <i className="mdi mdi-printer btn-icon-prepend" /> Print{" "}
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm ml-3 btn-success mr-0"
-                      >
-                        {" "}
-                        Add User
-                      </button>
-                    </div> */}
+    
           </div>
           <div className="row">
             <div className="col-xl-3 col-lg-12 stretch-card grid-margin">
