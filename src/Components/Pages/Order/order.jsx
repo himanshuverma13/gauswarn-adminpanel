@@ -19,7 +19,8 @@ const Order = () => {
       <section
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
-        <div className="container-scroller">
+        {/* <div className="container-scroller"> */}
+        <div className="row">
           <div className="col-lg-2">
             <Sidebar />
           </div>
@@ -33,6 +34,7 @@ const Order = () => {
             </div>
           </div>
         </div>
+        {/* </div> */}
       </section>
     </>
   );

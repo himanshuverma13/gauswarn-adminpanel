@@ -28,11 +28,11 @@ const FetchContact = async () => {
 
     return (
         <>
-            <div className='container-fluid bg-white rounded'>
-                <h1 className='text-uppercase'>Contact Info</h1>
-                <div className='row mt-3'>
+            <div className='container-fluid bg-white vh-100 rounded'>
+                <h1 className='text-uppercase text-center border-bottom py-3'>Contact Info</h1>
+                <div className='row mt-4'>
                     {Contact?.map((items, index) => (
-                        <div className='col-lg-4 mb-3'>
+                        <div className='col-lg-4 col-md-6 mb-3'>
                             <div className="card shadow border-3 border contact-card-bg">
                                 {/* <img
                                     className="card-img-top"

@@ -20,10 +20,10 @@ const Home = () => {
       <section
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
-        <div className="container-scroller">
+        {/* <div className="container-scroller"> */}
           <div className="row">
             <div className="col-lg-2">
-          <Sidebar />
+              <Sidebar />
             </div>
             <div className="col-lg-10">
           <div className="container-fluid page-body-wrapper">
@@ -33,7 +33,7 @@ const Home = () => {
 
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </>
   );

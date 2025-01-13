@@ -7589,7 +7589,7 @@ input[type=submit].btn-block {
     }
 
     .navbar-expand-sm .navbar-toggler {
-        display: none
+        display: block;
     }
 }
 
@@ -7640,7 +7640,7 @@ input[type=submit].btn-block {
     }
 
     .navbar-expand-md .navbar-toggler {
-        display: none
+        display: block;
     }
 }
 
@@ -7691,7 +7691,7 @@ input[type=submit].btn-block {
     }
 
     .navbar-expand-lg .navbar-toggler {
-        display: none
+        display: block;
     }
 }
 
@@ -7742,7 +7742,7 @@ input[type=submit].btn-block {
     }
 
     .navbar-expand-xl .navbar-toggler {
-        display: none
+        display: block;
     }
 }
 
@@ -51100,8 +51100,8 @@ svg {
 }
 
 @media (max-width:991px) {
-    .navbar .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
-        display: none
+    .navbar .navbar-menu-wrapper .navbar-toggler{
+        display: block !important;
     }
 }
 
@@ -51867,17 +51867,20 @@ svg {
 
 @media screen and (max-width:991px) {
     .sidebar-offcanvas {
-        position: fixed;
+        position: fixed !important;
         max-height: calc(100vh - 70px);
-        top: 70px;
+        height: 100vh !important;
+        top: unset !important;
         bottom: 0;
         overflow: auto;
+        display: block !important;
         right: -260px;
-        transition: all .25s ease-out
+        transition: all .25s ease-out;
     }
 
     .sidebar-offcanvas.active {
-        right: 0
+        right: 0;
+        display: none !important;
     }
 }
 

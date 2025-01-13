@@ -13,7 +13,7 @@ const Contactinfo = () => {
       <section
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
-        <div className="container-scroller">
+        {/* <div className="container-scroller"> */}
           <div className="row">
             <div className="col-lg-2">
               <Sidebar />
@@ -27,7 +27,7 @@ const Contactinfo = () => {
               </div>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </>
   );
