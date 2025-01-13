@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const URL = process.env.REACT_APP_API;
+const WTHRURL = process.env.REACT_APP_API_WEATHER
 
 // ---------------- Feedback API --------------------------------
 
@@ -182,6 +183,23 @@ export const GetAllOrderDetailsAPI = async () => {
       },
     });
     return response?.data?.orderDetails;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
+// ------------- weather forecast --------------------
+
+
+export const GetWeatherReportAPI = async () => {
+  try {
+    const response = await axios.get(`${WTHRURL}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    return response;
   } catch (error) {
     console.log("error: ", error);
   }
