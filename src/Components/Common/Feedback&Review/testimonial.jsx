@@ -62,7 +62,7 @@ const TestimonialCarousel = () => {
             className="card-slider-inner py-2 row"
           >
             {Feedback?.map((card, index) => (
-              <div className="card-wrapper col-lg-4 my-4" key={index}>
+              <div className="card-wrapper col-lg-4 col-md-6 my-4" key={index}>
                 <div className="card mb-3 h-100 shadow">
                   <div
                     className={`card-body feedback-card border-left border-${getRandomColor()}`}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { FaHome, FaLock, FaCartArrowDown, FaIdCard, FaClipboardCheck, FaClipboardList } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
@@ -10,12 +10,16 @@ import { BiLogOut } from "react-icons/bi";
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
 import Avatar from "../../Assets/images/logo/avtar24.png";
+import { UserContext } from "../useContext/useContext";
 const Sidebar = () => {
   const location = useLocation();
   console.log("location : ", location?.pathname);
+    const { SidebarOpen } = useContext(UserContext);
+    console.log('SidebarOpen: ', SidebarOpen);
+  
   return (
     <>
-      <nav className="sidebar sidebar-offcanvas" id="sidebar">
+      <nav className={`sidebar sidebar-offcanvas ${SidebarOpen ? "active" : " "}`} id="sidebar">
         <div>
         <div className="text-center sidebar-brand-wrapper d-flex align-items-center justify-content-center">
           <Link to={"/home"} className="sidebar-brand brand-logo">

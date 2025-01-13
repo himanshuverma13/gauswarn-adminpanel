@@ -62,7 +62,7 @@ const OrderDetails = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {currentItems.map((item, index) => (
+                            {currentItems?.map((item, index) => (
                               <tr key={index}>
                                 <td className="px-1 text-center">{item?.user_id}</td>
                                 <td className="px-1 text-center">{item?.user_name}</td>
@@ -90,7 +90,7 @@ const OrderDetails = () => {
                         <div className="pagination-container mt-3">
                           <nav>
                             <ul className="pagination justify-content-center">
-                              {[...Array(totalPages)].map((_, index) => (
+                              {[...Array(totalPages)]?.map((_, index) => (
                                 <li
                                   key={index}
                                   className={`page-item mx-2 ${

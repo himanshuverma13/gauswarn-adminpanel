@@ -124,14 +124,14 @@ const ProductDetailCards = () => {
           <div className="row product-item-wrapper mx-2 mt-3 w-100">
             {productDetails?.map((item, index) => (
               <div className="col-lg-4 col-md-6 product-item mb-3" key={item?.product_id}>
-                <div class="card shadow" >
+                <div className="card shadow" >
                   <div className="card-product-img">
                     <img
                       src={item?.product_image}
                       alt="product" class=" border-bottom" />
                   </div>
-                  <div class="p-3">
-                    <h4 class="card-title text-uppercase font-weight-bold">{item?.product_name}</h4>
+                  <div className="p-3">
+                    <h4 className="card-title text-uppercase font-weight-bold">{item?.product_name}</h4>
                     <div className="d-flex justify-content-between align-items-center">
                       <p className="font-weight-bold text-danger"> Price: {item?.product_price}</p>
                       <p className="font-weight-bold">Quantity:-  {item?.product_quantity}</p>
@@ -142,7 +142,7 @@ const ProductDetailCards = () => {
                     </div>
                     <hr className="my-0 mb-2" />
 
-                    <p class="card-text text-truncate">{item?.product_description}</p>
+                    <p className="card-text text-truncate">{item?.product_description}</p>
                     <div className="d-flex my-2">
                       <button
                         className="btn btn-success px-3"
