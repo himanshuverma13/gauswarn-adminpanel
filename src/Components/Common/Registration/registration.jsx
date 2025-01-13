@@ -22,7 +22,6 @@ const Registration = () => {
   const password = watch("password");
 
   const onSubmit = async (data) => {
-    console.log("data: ", data);
 
     try {
       const payload = {
@@ -32,8 +31,10 @@ const Registration = () => {
         mobile_number: data?.mobile,
       };
       const response = await RegisterAPI(payload);
-      console.log('response: ', response);
-       toast.success(response?.message)
+      if(response?.message){
+        toast.success(response?.message)
+        window.location = "/login"
+      }
       reset();
     } catch (error) {
       console.log("error: ", error);

@@ -115,8 +115,7 @@ export const ForgotAPI = async (payload) => {
         "ngrok-skip-browser-warning": "69420",
       },
     });
-    console.log('response: ', response);
-    // return response?.data;
+    return response?.data;
   } catch (error) {
     console.log("error: ", error);
   }
