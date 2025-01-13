@@ -30,7 +30,7 @@ const UserLogin = () => {
         toast.success(response?.message)
       }
       else{
-        alert('Invalid Credentials')
+        toast?.error(response?.message)
       }
     } catch (error) {
       console.log('error: ', error);

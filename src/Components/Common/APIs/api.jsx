@@ -87,7 +87,7 @@ export const LoginAPI = async (payload) => {
         "ngrok-skip-browser-warning": "69420",
       },
     });
-    return response?.data;
+    return response;
   } catch (error) {
     console.log("error: ", error);
   }
