@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { ForgotAPI, ResetAPI } from "../APIs/api"; // Import APIs
 // Images
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
+import { toast } from "react-toastify";
 
 const Forgot = () => {
   const [step, setStep] = useState(1); // Step 1: Input email/mobile, Step 2: Input OTP
@@ -25,14 +26,15 @@ const Forgot = () => {
         email: data.email,
       };
       const response = await ForgotAPI(payload);
-      if (response?.message) {
+      console.log('response: ', response?.message);
+      if (response?.message == "OTP sent your email successfully.") {
+        toast?.success(response?.message)
         setStep(2); // Move to OTP verification step
       } else {
-        alert(response?.message);
+        toast?.error(response?.message)
       }
     } catch (error) {
-      console.error("Error sending OTP:", error);
-      alert("An error occurred while sending OTP.");
+      toast?.error(error?.response?.message)
     }
   };
 
@@ -44,17 +46,15 @@ const Forgot = () => {
         newPassword: data?.password,
       };
       const response = await ResetAPI(payload);
-      if (response?.message) {
-        alert(
-          response?.message 
-        );
+      console.log('response?.message: ', response?.message?.message);
+      if (response?.message?.message == "Password reset sucessfully") {
+        toast?.success(response?.message)
         window.location = "/login"
       } else {
-        alert(response?.message );
+        toast?.error(response?.message)
       }
     } catch (error) {
-      console.error("Error verifying OTP:", error);
-      alert("An error occurred while verifying OTP.");
+      toast?.error(error?.response?.message)
     }
   };
 

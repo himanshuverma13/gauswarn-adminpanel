@@ -22,19 +22,15 @@ const UserLogin = () => {
         password:data?.password ,
       };
       const response = await LoginAPI(payload);
-      console.log('response: ', response);
       reset();
-      if(response?.success){
+      if(response?.data?.success){
         window.location ="/home" 
         localStorage.setItem('userDetails', JSON.stringify(response));
-        toast.success(response?.message)
+        toast.success(response?.data?.message)
       }
-      else{
-        toast?.error(response?.message)
-      }
+  
     } catch (error) {
-      console.log('error: ', error);
-
+      toast?.error(error?.response?.data?.message)
     }
   };
 
@@ -118,7 +114,7 @@ const UserLogin = () => {
                         </div>
                         <div className="text-center mt-4 font-weight-light mb-2">
                           Don't have an account?{" "}
-                          <NavLink to="/register" className="text-primary">
+                          <NavLink to={"/register"} className="text-primary">
                             Create
                           </NavLink>
                         </div>

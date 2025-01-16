@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const URL = process.env.REACT_APP_API;
-const WTHRURL = process.env.REACT_APP_API_WEATHER
+const WTHRURL = process.env.REACT_APP_API_WEATHER;
+const Token = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
+
 
 // ---------------- Feedback API --------------------------------
 
@@ -11,6 +13,7 @@ export const FeedbackAPI = async () => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data?.reviews;
@@ -26,6 +29,7 @@ export const GetProductAPI = async () => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data;
@@ -43,6 +47,7 @@ export const UpdateProductAPI = async (id, payload) => {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
+          "Authorization": `${Token?.data?.accessToken}` 
         },
       }
     );
@@ -57,6 +62,7 @@ export const DeleteProductAPI = async (payload) => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data;
@@ -70,6 +76,7 @@ export const AddProductAPI = async (payload) => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response;
@@ -81,62 +88,63 @@ export const AddProductAPI = async (payload) => {
 //  ---------- Login & Register API --------------------------------
 export const LoginAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/login`,payload, {
+    const response = await axios.post(`${URL}/login`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 export const RegisterAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/register`,payload, {
+    const response = await axios.post(`${URL}/register`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
 // -------------------------ForgotPasswprd & Reset API----------------------------------
 export const ForgotAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/forgetPassword`,payload, {
+    const response = await axios.post(`${URL}/forgetPassword`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 
 export const ResetAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/reset`,payload, {
+    const response = await axios.post(`${URL}/reset`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
-    console.log('response: ', response);
-    // return response?.data;
+    return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
-
-
 
 // ------------------User Info API---------------------------------------
 
@@ -146,6 +154,7 @@ export const GetAllUser = async () => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     // console.log('response: ', response);
@@ -163,6 +172,7 @@ export const GetAllContactAPI = async () => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data?.contact;
@@ -179,6 +189,7 @@ export const GetAllOrderDetailsAPI = async () => {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response?.data?.orderDetails;
@@ -189,13 +200,13 @@ export const GetAllOrderDetailsAPI = async () => {
 
 // ------------- weather forecast --------------------
 
-
 export const GetWeatherReportAPI = async () => {
   try {
     const response = await axios.get(`${WTHRURL}`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
       },
     });
     return response;
@@ -203,3 +214,21 @@ export const GetWeatherReportAPI = async () => {
     console.log("error: ", error);
   }
 };
+
+// ------------- Sale Report Chart data --------------------
+
+export const GetSaleReportAPI = async () => {
+    try {
+      const response = await axios.get(`${URL}/getAllSales`, {
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420",
+          "Authorization": `${Token?.data?.accessToken}` 
+        },
+      });
+      return response?.data;
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+

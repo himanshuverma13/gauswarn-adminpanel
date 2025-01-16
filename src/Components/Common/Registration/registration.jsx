@@ -29,15 +29,17 @@ const Registration = () => {
         email: data?.email,
         password: data?.password,
         mobile_number: data?.mobile,
+        role: "admin"
       };
       const response = await RegisterAPI(payload);
+      console.log('response: ', response);
       if(response?.message){
-        toast.success(response?.message)
+        toast.success(response?.data?.message)
         window.location = "/login"
       }
-      reset();
+      // reset();
     } catch (error) {
-      console.log("error: ", error);
+      toast?.error(error?.response?.data?.message)
     }
   };
 
