@@ -35,6 +35,7 @@ const ProductDetailCards = () => {
     setValue("product_quantity", "");
     setValue("product_stock", "");
     setValue("product_category", "");
+    setValue("product_website_name", "");
     setValue("product_image", "");
     reset();
     setIsEdit(false);
@@ -54,6 +55,7 @@ const ProductDetailCards = () => {
       setValue("product_quantity", product?.product_quantity);
       setValue("product_stock", product?.product_stock);
       setValue("product_category", product?.product_category);
+      setValue("product_website_name", product?.product_website_name);
       setValue("product_image", product?.product_image);
     }
     setModalOpen(true);
@@ -78,14 +80,12 @@ const ProductDetailCards = () => {
         setProductDetails(updatedProducts);
         const response = await UpdateProductAPI(productDetails[currentProductIndex]?.product_id, data);
         toast.success(response?.message);
-        console.log("response: ", response);
         fetchProducts();
       } else {
         setProductDetails([...productDetails, data]);
         const response = await AddProductAPI(data);
         toast.success(response?.data?.message);
 
-        console.log("response: ", response);
         fetchProducts();
       }
     } catch (error) {
@@ -97,7 +97,6 @@ const ProductDetailCards = () => {
   const confirmDelete = async () => {
     try {
       const response = await DeleteProductAPI(currentPrdId);
-      console.log('response : ', response);
       toast.success(response?.message)
       // setProductDetails(updatedProducts);
       setDeleteConfirm(false);
@@ -284,11 +283,13 @@ const ProductDetailCards = () => {
                     </div>
                     <div className="col-lg-6 mb-3">
                       <label className="font-weight-bold text-uppercase">Select</label>
-                      <select class="form-select form-select-lg px-5 py-2 shadow" aria-label="Default select example">
+                      <select class="form-select form-select-lg px-5 py-2 shadow" aria-label="Default select example"
+                      {...register("product_website_name", { required: true })}
+                      >
                         <option selected>Select</option>
-                        <option value="1">Raj Laxmi</option>
-                        <option value="2">GauSwarn</option>
-                        <option value="3">Both</option>
+                        <option value="RajLaxmi">Raj Laxmi</option>
+                        <option value="GauSwarn">GauSwarn</option>
+                        <option value="Both">Both</option>
                       </select>
                     </div>
                     <div className="form-group col-lg-12">

@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { GetWeatherReportAPI } from "../APIs/api";
+import { GetSaleReportAPI, GetWeatherReportAPI } from "../APIs/api";
 import { IoMdBasket, IoIosBriefcase } from "react-icons/io";
 import { TbCube } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
 import Footer from "../../Common/Footer/footer";
 import LineChart from "../../Common/Charts/lineChart";
+import { MdAutoGraph, MdBarChart } from "react-icons/md";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { VscGraphLeft } from "react-icons/vsc";
+import BarChart from "../Charts/barChart";
 
 const Dashboard = () => {
   const [Weather, setWeather] = useState();
+  const [ChartData, setChartData] = useState();
 
   const FetchDasboardData = async () => {
     try {
       const response = await GetWeatherReportAPI();
+      const saleData = await GetSaleReportAPI();
+      setChartData(saleData?.data);
       setWeather(response?.data);
     } catch (error) {
       console.log("error: ", error);
     }
   };
+
+
+  const TotalWeekSale = ChartData?.week?.data.reduce((partialSum, a) => {
+    return Number(partialSum?.daily_total_sales) + Number(a?.daily_total_sales)
+  })
+  const TotalWeekUser = ChartData?.week?.data.reduce((partialSum, a) => {
+    return Number(partialSum?.daily_total_users) + Number(a?.daily_total_users)
+  })
+
 
   useEffect(() => {
     FetchDasboardData();
@@ -29,7 +45,7 @@ const Dashboard = () => {
           <div className="page-header d-flex justify-content-between">
             <h3>Hi, welcome back! </h3>
             <h6 className="text-muted d-inline-block">
-              Your web analytics dashboard template.
+              Your web analytics of dashboard
             </h6>
     
           </div>
@@ -43,7 +59,7 @@ const Dashboard = () => {
                         <div className="color-card">
                           <p className="mb-0 color-card-head">Sales</p>
                           <h2 className="text-white">
-                            $8,753.<span className="h5">00</span>
+                            ₹ {ChartData?.month?.data?.monthly_total_sales}.<span className="h5">00</span>
                           </h2>
                         </div>
                         {/* <i className="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning" /> */}
@@ -60,9 +76,9 @@ const Dashboard = () => {
                     <div className="card-body px-3 py-4">
                       <div className="d-flex justify-content-between align-items-start">
                         <div className="color-card">
-                          <p className="mb-0 color-card-head">Margin</p>
+                          <p className="mb-0 color-card-head">User</p>
                           <h2 className="text-white">
-                            $5,300.<span className="h5">00</span>
+                         No. {ChartData?.month?.data?.monthly_total_users}
                           </h2>
                         </div>
                         {/* <i className="card-icon-indicator mdi mdi-cube-outline " /> */}
@@ -144,7 +160,7 @@ const Dashboard = () => {
                           <p className="m-0 survey-head">Today Earnings</p>
                           <div className="d-flex w-100 align-items-end justify-content-between">
                             <div>
-                              <h3 className="survey-value">$5,300</h3>
+                              <h3 className="survey-value">₹ {TotalWeekSale || "00"} /-</h3>
                               <p className="text-success m-0">
                                 -310 avg. sales
                               </p>
@@ -158,16 +174,7 @@ const Dashboard = () => {
                                   <div className="" />
                                 </div>
                               </div>
-                              <canvas
-                                height={62}
-                                width={87}
-                                style={{
-                                  display: "block",
-                                  height: 50,
-                                  width: 70,
-                                }}
-                                className="chartjs-render-monitor"
-                              />
+                              <MdAutoGraph className="text-danger h1" />
                             </div>
                           </div>
                         </div>
@@ -176,10 +183,10 @@ const Dashboard = () => {
                     <div className="col-sm-4">
                       <div className="card mb-3 mb-sm-0 shadow">
                         <div className="card-body py-3 px-3">
-                          <p className="m-0 survey-head">Product Sold</p>
+                          <p className="m-0 survey-head">Num of User</p>
                           <div className="d-flex w-100 align-items-end justify-content-between">
                             <div>
-                              <h3 className="survey-value">$5,300</h3>
+                              <h3 className="survey-value">No. {TotalWeekUser || "00"}</h3>
                               <p className="text-danger m-0">-310 avg. sales</p>
                             </div>
                             <div>
@@ -191,16 +198,7 @@ const Dashboard = () => {
                                   <div className="" />
                                 </div>
                               </div>
-                              <canvas
-                                height={62}
-                                width={87}
-                                style={{
-                                  display: "block",
-                                  height: 50,
-                                  width: 70,
-                                }}
-                                className="chartjs-render-monitor"
-                              />
+                              <BsGraphUpArrow className="text-primary h1"/>
                             </div>
                           </div>
                         </div>
@@ -226,16 +224,7 @@ const Dashboard = () => {
                                   <div className="" />
                                 </div>
                               </div>
-                              <canvas
-                                height={62}
-                                width={87}
-                                style={{
-                                  display: "block",
-                                  height: 50,
-                                  width: 70,
-                                }}
-                                className="chartjs-render-monitor"
-                              />
+                              <MdBarChart className="text-success h1"/>
                             </div>
                           </div>
                         </div>
@@ -244,7 +233,7 @@ const Dashboard = () => {
                   </div>
                   <div className="row my-3">
                     <div className="col-sm-12">
-                      <LineChart />
+                      <LineChart LineChartData={ChartData} />
                       {/* <div className="sales-chart-height">
                                 <div className="chartjs-size-monitor">
                                   <div className="chartjs-size-monitor-expand">
@@ -506,59 +495,10 @@ const Dashboard = () => {
                       <div className="" />
                     </div>
                   </div>
-                  <h4 className="card-title text-black">Business Survey</h4>
-                  <p className="text-muted pb-2">Jan 01 2019 - Dec 31 2019</p>
-                  <canvas
-                    height={196}
-                    width={392}
-                    id="surveyBarChart"
-                    style={{
-                      display: "block",
-                      height: 157,
-                      width: 314,
-                    }}
-                    className="chartjs-render-monitor"
-                  />
-                  <div className="row border-bottom pb-4 pt-4 align-items-center mx-0">
-                    <div className="col-sm-9 pl-0">
-                      <div className="d-flex">
-                        <img
-                          src="data:image/jpeg;base64,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"
-                          alt=""
-                        />
-                        <div className="pl-2">
-                          <h6 className="m-0">Red Chair</h6>
-                          <p className="m-0">Home Decoration</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-sm-3 pl-0 pl-sm-3">
-                      <div className="badge badge-inverse-success mt-3 mt-sm-0">
-                        {" "}
-                        +7.7%
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row py-3 pb-0 align-items-center mx-0">
-                    <div className="col-sm-9 pl-0">
-                      <div className="d-flex">
-                        <img
-                          src="data:image/jpeg;base64,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"
-                          alt=""
-                        />
-                        <div className="pl-2">
-                          <h6 className="m-0">Gray Sofa</h6>
-                          <p className="m-0">Home Decoration</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-sm-3 pl-0 pl-sm-3">
-                      <div className="badge badge-inverse-success mt-3 mt-sm-0">
-                        {" "}
-                        +7.7%
-                      </div>
-                    </div>
-                  </div>
+                  <h4 className="card-title text-black">User Survey</h4>
+                  <p className="text-muted pb-2">{ChartData?.sixMonths?.start} - {ChartData?.sixMonths?.end}</p>
+                  <BarChart barChartData={ChartData}/>
+                 
                 </div>
               </div>
             </div>

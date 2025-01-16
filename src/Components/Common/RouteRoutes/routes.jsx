@@ -15,7 +15,8 @@ const RouteRoutes = () => {
   const { setUserLogin, UserLogins } = useContext(UserContext);
   useEffect(() => {
     let getvalue = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
-    setUserLogin(getvalue?.message);
+    console.log('getvalue: ', getvalue);
+    setUserLogin(getvalue?.data?.message);
   }, []);
 
   return (
