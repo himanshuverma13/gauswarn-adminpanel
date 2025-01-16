@@ -9,7 +9,7 @@ const Token = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
 
 export const FeedbackAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/allfeedback`, {
+    const response = await axios.get(`${URL}/admin/allfeedback`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -22,10 +22,25 @@ export const FeedbackAPI = async () => {
   }
 };
 
+export const DeleteFeedbackAPI = async (id) => {
+  try {
+    const response = await axios.delete(`${URL}/admin/deleteFeedbackById/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
+      },
+    });
+    return response?.data
+  } catch (error) {
+    throw error
+  }
+};
+
 //  ---------- Product CRUD API --------------------------------
 export const GetProductAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/getAllProduct`, {
+    const response = await axios.get(`${URL}/admin/getAllProduct`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -41,7 +56,7 @@ export const UpdateProductAPI = async (id, payload) => {
   console.log("id,payload: ", id, payload);
   try {
     const response = await axios.post(
-      `${URL}/updateProductById/${id}`,
+      `${URL}/admin/updateProductById/${id}`,
       payload,
       {
         headers: {
@@ -58,7 +73,7 @@ export const UpdateProductAPI = async (id, payload) => {
 };
 export const DeleteProductAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/deleteProductById/${payload}`, {
+    const response = await axios.post(`${URL}/admin/deleteProductById/${payload}`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -72,7 +87,7 @@ export const DeleteProductAPI = async (payload) => {
 };
 export const AddProductAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/createproduct`, payload, {
+    const response = await axios.post(`${URL}/admin/createproduct`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -88,7 +103,7 @@ export const AddProductAPI = async (payload) => {
 //  ---------- Login & Register API --------------------------------
 export const LoginAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/login`, payload, {
+    const response = await axios.post(`${URL}/admin/login`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -102,7 +117,7 @@ export const LoginAPI = async (payload) => {
 };
 export const RegisterAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/register`, payload, {
+    const response = await axios.post(`${URL}/admin/register`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -118,7 +133,7 @@ export const RegisterAPI = async (payload) => {
 // -------------------------ForgotPasswprd & Reset API----------------------------------
 export const ForgotAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/forgetPassword`, payload, {
+    const response = await axios.post(`${URL}/admin/forgetPassword`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -133,7 +148,7 @@ export const ForgotAPI = async (payload) => {
 
 export const ResetAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/reset`, payload, {
+    const response = await axios.post(`${URL}/admin/reset`, payload, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -150,7 +165,7 @@ export const ResetAPI = async (payload) => {
 
 export const GetAllUser = async () => {
   try {
-    const response = await axios.get(`${URL}/getAllUserInfo`, {
+    const response = await axios.get(`${URL}/admin/getAllUserInfo`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -168,7 +183,7 @@ export const GetAllUser = async () => {
 
 export const GetAllContactAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/getAllContact`, {
+    const response = await axios.get(`${URL}/admin/getAllContact`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -185,7 +200,7 @@ export const GetAllContactAPI = async () => {
 
 export const GetAllOrderDetailsAPI = async () => {
   try {
-    const response = await axios.get(`${URL}/getAllOrderDetails`, {
+    const response = await axios.get(`${URL}/admin/getAllOrderDetails`, {
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -219,7 +234,7 @@ export const GetWeatherReportAPI = async () => {
 
 export const GetSaleReportAPI = async () => {
     try {
-      const response = await axios.get(`${URL}/getAllSales`, {
+      const response = await axios.get(`${URL}/admin/getAllSales`, {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420",
@@ -231,4 +246,22 @@ export const GetSaleReportAPI = async () => {
       console.log("error: ", error);
     }
   };
+
+
+  // ---------------- CSV Excel Download API --------------------------------
+export const DownloadCSVExcelAPI = async () => {
+  try {
+    const response = await axios.get(`${URL}/admin/getAllSales`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+        "Content-Type": "text/csv; charset=UTF-8",
+        "Authorization": `${Token?.data?.accessToken}` 
+      },
+      responseType: "blob",
+    });
+    return response
+  } catch (error) {
+    throw error
+  }
+};
 

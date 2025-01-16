@@ -28,19 +28,18 @@ const Sidebar = () => {
               alt="logo"
             />
           </Link>
-          <a
+          <span
             className="sidebar-brand brand-logo-mini pt-3"
-            href="index.html"
           >
             <img
               src={Logo}
               alt="logo"
             />
-          </a>
+          </span>
         </div>
         <ul className="nav">
           <li className="nav-item nav-profile border-bottom">
-            <a href="!#" className="nav-link">
+            <span className="nav-link">
               <div className="nav-profile-image">
                 <img
                   src={Avatar}
@@ -53,7 +52,7 @@ const Sidebar = () => {
                   <h4 className="font-weight-medium mt-2">Henry Klein</h4>
                 {/* </div> */}
               </div>
-            </a>
+            </span>
           </li>
           <li className={`nav-item ${location?.pathname == "/home" ? "active" : ""
             }`}>

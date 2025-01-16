@@ -9,6 +9,7 @@ import { MdAutoGraph, MdBarChart } from "react-icons/md";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { VscGraphLeft } from "react-icons/vsc";
 import BarChart from "../Charts/barChart";
+import DownloadCsvButton from "../csvButton";
 
 const Dashboard = () => {
   const [Weather, setWeather] = useState();
@@ -130,29 +131,7 @@ const Dashboard = () => {
             <div className="col-xl-9 stretch-card grid-margin">
               <div className="card">
                 <div className="card-body">
-                  {/* <div className="row">
-                            <div className="col-sm-7">
-                              <h5>Business Survey</h5>
-                              <p className="text-muted">
-                                Show overview jan 2018 - Dec 2019{" "}
-                                <a
-                                  className="text-muted font-weight-medium pl-2"
-                                  href="!#"
-                                >
-                                  <u>See Details</u>
-                                </a>
-                              </p>
-                            </div>
-                            <div className="col-sm-5 text-md-right">
-                              <button
-                                type="button"
-                                className="btn btn-icon-text mb-3 mb-sm-0 btn-inverse-primary font-weight-normal mr-0"
-                              >
-                                <i className="mdi mdi-email btn-icon-prepend" />
-                                Download Report
-                              </button>
-                            </div>
-                          </div> */}
+      
                   <div className="row">
                     <div className="col-sm-4">
                       <div className="card mb-3 mb-sm-0 shadow">
@@ -234,26 +213,7 @@ const Dashboard = () => {
                   <div className="row my-3">
                     <div className="col-sm-12">
                       <LineChart LineChartData={ChartData} />
-                      {/* <div className="sales-chart-height">
-                                <div className="chartjs-size-monitor">
-                                  <div className="chartjs-size-monitor-expand">
-                                    <div className="" />
-                                  </div>
-                                  <div className="chartjs-size-monitor-shrink">
-                                    <div className="" />
-                                  </div>
-                                </div>
-                                <canvas
-                                  height={325}
-                                  width={1026}
-                                  style={{
-                                    display: "block",
-                                    height: "260px",
-                                    width: '821px',
-                                  }}
-                                  className="chartjs-render-monitor"
-                                />
-                              </div> */}
+             
                     </div>
                   </div>
                   <div className="row">
@@ -264,14 +224,9 @@ const Dashboard = () => {
                         <b>Learn More</b>
                       </p>
                     </div>
-                    <div className="col-sm-4">
-                      <p className="mb-0 text-muted">Sales Revenue</p>
-                      <h5 className="d-inline-block survey-value mb-0">
-                        $2,45,500
-                      </h5>
-                      <p className="d-inline-block text-danger mb-0 ml-1">
-                        last 8 months
-                      </p>
+                    <div className="col-sm-4 text-center">
+                      <p className="mb-0 text-muted">Download CSV Excel File</p>
+                      <DownloadCsvButton/>
                     </div>
                   </div>
                 </div>
