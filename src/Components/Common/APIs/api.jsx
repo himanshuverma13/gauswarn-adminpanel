@@ -74,7 +74,7 @@ export const UpdateProductAPI = async (id, payload) => {
 };
 export const DeleteProductAPI = async (payload) => {
   try {
-    const response = await axios.post(`${URL}/admin/deleteProductById/${payload}`, {
+    const response = await axios.post(`${URL}/admin/deleteProductById/${payload}`,{} ,{
       headers: {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420",
