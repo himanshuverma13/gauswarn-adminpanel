@@ -37,6 +37,8 @@ const UserDetails = () => {
         <div className="row">
           <div className="col-12">
             <div className="card">
+            <h2 className='text-uppercase text-center border-bottom py-3'>User Info</h2>
+
               <div className="card-body full-screen-height">
                 <div className="row">
                   <div className="col-12">

@@ -27,14 +27,22 @@ const Dashboard = () => {
   };
 
 
+  // const TotalWeekSale = ChartData?.week?.data.reduce((partialSum, a) => {
+  //   return Number(partialSum?.daily_total_sales) + Number(a?.daily_total_sales)
+  // })
+  // const TotalWeekUser = ChartData?.week?.data.reduce((partialSum, a) => {
+  //   return Number(partialSum?.daily_total_users) + Number(a?.daily_total_users)
+  // })
+
   const TotalWeekSale = ChartData?.week?.data?.reduce((partialSum, a) => {
     return partialSum + Number(a?.daily_total_sales);
-  }, 0);  // Start with 0
-  
+  }, 0);  
+ 
   const TotalWeekUser = ChartData?.week?.data?.reduce((partialSum, a) => {
     return partialSum + Number(a?.daily_total_users);
   }, 0);  // Start with 0
-
+ 
+ 
 
   useEffect(() => {
     FetchDasboardData();

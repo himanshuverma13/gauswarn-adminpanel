@@ -36,10 +36,12 @@ const OrderDetails = () => {
 
   return (
     <div className="content-wrapper">
+
       <div>
         <div className="row">
           <div className="col-12">
             <div className="card">
+              <h2 className='text-uppercase text-center border-bottom py-3'>Order Details</h2>
               <div className="card-body">
                 <div className="row">
                   <div className="col-12">
@@ -93,9 +95,8 @@ const OrderDetails = () => {
                               {[...Array(totalPages)]?.map((_, index) => (
                                 <li
                                   key={index}
-                                  className={`page-item mx-2 ${
-                                    currentPage === index + 1 ? "active" : ""
-                                  }`}
+                                  className={`page-item mx-2 ${currentPage === index + 1 ? "active" : ""
+                                    }`}
                                 >
                                   <button
                                     className="page-link"
