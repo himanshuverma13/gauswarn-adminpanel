@@ -15,10 +15,10 @@ const Product = () => {
       >
         {/* <div className="container-scroller"> */}
           <div className="row overflow-hidden">
-            <div className="col-lg-2">
+            <div className={`${HandleSidePanel == true ? "col-lg-1" : "col-lg-2"}`}>
               <Sidebar />
             </div>
-            <div className="col-lg-10">
+            <div className={`${HandleSidePanel == true ? "col-lg-11" : "col-lg-10"}`}>
               <div className=" content-wrapper">
                 <Navbar handleSidepanel={handleSidePanel} />
                 <div className="main-panel w-100">

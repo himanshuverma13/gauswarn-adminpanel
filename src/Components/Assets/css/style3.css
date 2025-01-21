@@ -2923,6 +2923,13 @@ pre code {
     .container {
         max-width: 720px
     }
+    .page-body-wrapper{
+        margin: 0 !important;
+    }
+    .content-wrapper{
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
 }
 
 @media (min-width:992px) {
