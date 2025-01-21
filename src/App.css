@@ -64,7 +64,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 250px; /* Adjust the width as needed */
+  width: 235px; 
   background-color: #343a40; /* Sidebar background color */
   color: white; /* Text color */
   overflow-y: auto; /* Enable scrolling if content exceeds view */
