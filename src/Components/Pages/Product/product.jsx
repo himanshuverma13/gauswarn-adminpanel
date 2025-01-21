@@ -14,7 +14,7 @@ const Product = () => {
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
         {/* <div className="container-scroller"> */}
-          <div className="row">
+          <div className="row overflow-hidden">
             <div className="col-lg-2">
               <Sidebar />
             </div>

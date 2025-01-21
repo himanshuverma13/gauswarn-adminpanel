@@ -117,6 +117,8 @@ const ProductDetailCards = () => {
           >
             Add Product
           </button>
+          {/* <h2 className='text-uppercase text-center border-bottom py-3'>Product's</h2> */}
+
         </div>
 
         <div className="container-fluid page-body-wrapper">
