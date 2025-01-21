@@ -25,9 +25,9 @@ const OrderDetails = () => {
   // Calculate indices for slicing data
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = OrderDetails.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = OrderDetails?.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(OrderDetails.length / itemsPerPage);
+  const totalPages = Math?.ceil(OrderDetails?.length / itemsPerPage);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
@@ -92,7 +92,7 @@ const OrderDetails = () => {
                         <div className="pagination-container mt-3">
                           <nav>
                             <ul className="pagination justify-content-center">
-                              {[...Array(totalPages)]?.map((_, index) => (
+                              {[...Array(totalPages || [])]?.map((_, index) => (
                                 <li
                                   key={index}
                                   className={`page-item mx-2 ${currentPage === index + 1 ? "active" : ""
