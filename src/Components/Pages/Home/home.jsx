@@ -21,18 +21,18 @@ const Home = () => {
         className={`${HandleSidePanel == true ? "sidebar-icon-only" : ""}`}
       >
         {/* <div className="container-scroller"> */}
-          <div className="row">
-            <div className="col-lg-2">
-              <Sidebar />
-            </div>
-            <div className="col-lg-10">
-          <div className="container-fluid page-body-wrapper">
-            <Navbar handleSidepanel={handleSidePanel} />
-            <Dashboard/>
+        <div className="row">
+          <div className="col-lg-2">
+            <Sidebar />
           </div>
+          <div className="col-lg-10">
+            <div className="container-fluid page-body-wrapper">
+              <Navbar handleSidepanel={handleSidePanel} />
+              <Dashboard />
+            </div>
 
-            </div>
           </div>
+        </div>
         {/* </div> */}
       </section>
     </>

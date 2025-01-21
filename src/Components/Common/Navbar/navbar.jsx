@@ -27,14 +27,14 @@ const Navbar = ({ handleSidepanel, handleSidebarOpen }) => {
   return (
     <>
       <nav className="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
-        <div className="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+        <div className="navbar-menu-wrapper d-flex align-items-center justify-content-between">
           {/* <button
             className="navbar-brand brand-logo-mini align-self-center d-lg-none"
           >
             <GiHamburgerMenu className="nav-icon" />
           </button> */}
           <button
-            className="navbar-toggler navbar-toggler align-self-center mr-2"
+            className="navbar-toggler navbar-toggler align-self-center"
             type="button"
             onClick={toggleCollapse}
           >
