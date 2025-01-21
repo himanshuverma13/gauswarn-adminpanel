@@ -19,7 +19,7 @@ const Product = () => {
               <Sidebar />
             </div>
             <div className={`${HandleSidePanel == true ? "col-lg-11" : "col-lg-10"}`}>
-              <div className=" content-wrapper">
+              <div className="content-wrapper">
                 <Navbar handleSidepanel={handleSidePanel} />
                 <div className="main-panel w-100">
                   <ProductdetailCards />
