@@ -6,13 +6,16 @@ import "./App.css";
 
 import RouteRoutes from "./Components/Common/RouteRoutes/routes";
 import { UserProvider } from "./Components/Common/useContext/useContext";
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <>
     <ToastContainer/>
       <UserProvider>
+        <BrowserRouter>
         <RouteRoutes />
+        </BrowserRouter>
       </UserProvider>
     </>
   );
