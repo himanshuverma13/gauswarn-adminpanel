@@ -15,6 +15,9 @@ const Navbar = ({ handleSidepanel, handleSidebarOpen }) => {
   const { SidebarOpen,setSidebarOpen } = useContext(UserContext);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  const userName = localStorage?.getItem('userName' ?? '') ;
+
+
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
     handleSidepanel(!isCollapsed); // Pass the updated state to the handler
@@ -64,7 +67,7 @@ const Navbar = ({ handleSidepanel, handleSidebarOpen }) => {
 
             </li>
             <li className="nav-item nav-profile dropdown border-0">
-              <span className="fw-bold text-white ">ADMIN</span>
+              <span className="fw-bold text-white ">{userName || "unknown"}</span>
             </li>
           </ul>
           <div

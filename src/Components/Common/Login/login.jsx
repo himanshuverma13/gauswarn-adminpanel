@@ -139,7 +139,7 @@ import { useForm } from "react-hook-form";
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import Logo from "../../Assets/images/logo/RAJLAXMI JAVIK PNG.png";
-import { LoginAPI } from "../APIs/api";
+import { GetUserDetailsAPI, LoginAPI } from "../APIs/api";
 import { toast } from "react-toastify";
 
 const UserLogin = () => {
@@ -159,6 +159,7 @@ const UserLogin = () => {
         password: data?.password,
       };
       const response = await LoginAPI(payload);
+      
       reset();
       if (response?.data?.success) {
         localStorage.setItem("userDetails", JSON.stringify(response));
@@ -166,6 +167,7 @@ const UserLogin = () => {
         // navigate("/home"); // ✅ Use navigate instead of window.location
         window.location ="/home"
       }
+      toast.error(response?.data?.message);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetSaleReportAPI, GetWeatherReportAPI } from "../APIs/api";
+import { GetSaleReportAPI, GetUserDetailsAPI, GetWeatherReportAPI } from "../APIs/api";
 import { IoMdBasket, IoIosBriefcase } from "react-icons/io";
 import { TbCube } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
@@ -19,6 +19,9 @@ const Dashboard = () => {
     try {
       const response = await GetWeatherReportAPI();
       const saleData = await GetSaleReportAPI();
+      console.log('saleData: ', saleData);
+      const getuser = await GetUserDetailsAPI();
+      localStorage.setItem('userName', getuser?.user?.userName || 'unknown');
       setChartData(saleData?.data);
       setWeather(response?.data);
     } catch (error) {
@@ -105,9 +108,9 @@ const Dashboard = () => {
                     <div className="card-body px-3 py-4">
                       <div className="d-flex justify-content-between align-items-start">
                         <div className="color-card">
-                          <p className="mb-0 color-card-head">Orders</p>
+                          <p className="mb-0 color-card-head">Monthly Profit</p>
                           <h2 className="text-white">
-                            $1,753.<span className="h5">00</span>
+                            ₹ {ChartData?.monthlyProfit} /-
                           </h2>
                         </div>
                         {/* <i className="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary" /> */}

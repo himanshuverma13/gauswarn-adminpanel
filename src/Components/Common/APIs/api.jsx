@@ -22,6 +22,7 @@ export const FeedbackAPI = async () => {
   }
 };
 
+
 export const DeleteFeedbackAPI = async (id) => {
   try {
     const response = await axios.delete(`${URL}/admin/deleteFeedbackById/${id}`, {
@@ -115,6 +116,22 @@ export const LoginAPI = async (payload) => {
     throw error;
   }
 };
+
+export const GetUserDetailsAPI = async () => {
+  try {
+    const response = await axios.get(`${URL}/admin/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "69420",
+        "Authorization": `${Token?.data?.accessToken}` 
+      },
+    });
+    return response?.data
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
 export const RegisterAPI = async (payload) => {
   try {
     const response = await axios.post(`${URL}/admin/register`, payload, {
