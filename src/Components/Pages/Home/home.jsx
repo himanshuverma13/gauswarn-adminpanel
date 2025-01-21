@@ -28,7 +28,9 @@ const Home = () => {
             <div className={`${HandleSidePanel == true ? "col-lg-11" : "col-lg-10"}`}>
           <div className="container-fluid page-body-wrapper">
             <Navbar handleSidepanel={handleSidePanel} />
-            <Dashboard/>
+           <div>
+           <Dashboard/>
+           </div>
           </div>
 
           </div>

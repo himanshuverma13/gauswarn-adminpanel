@@ -51577,7 +51577,7 @@ svg {
     background: linear-gradient(180deg, #e6e5f2, #4599cd);
     font-family: Rubik, sans-serif;
     padding: 0;
-    width: 312px;
+     width: 312px; 
     z-index: 11;
     transition: width .25s ease, background .25s ease;
     -webkit-transition: width .25s ease, background .25s ease;
