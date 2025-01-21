@@ -49778,12 +49778,14 @@ footer h4 a {
 
 .auth .login-half-bg {
     background: url(../../Assets/images/Login/login-bg.jpg);
-    background-size: cover
+    background-size: cover;
+    height: 100vh;
 }
 
 .auth .register-half-bg {
     background: url(../../Assets//images/Login/register-bg.jpg);
-    background-size: cover
+    background-size: cover;
+    height: 100vh;
 }
 
 .auth.lock-full-bg {
