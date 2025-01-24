@@ -96,15 +96,15 @@ const ProductDetailCards = () => {
           );
           toast.success(response?.message);
           fetchProducts();
-    setModalOpen(false);
+          setModalOpen(false);
 
         } else {
           setProductDetails([...productDetails, data]);
           const response = await AddProductAPI(data);
           toast.success(response?.data?.message);
-  
+
           fetchProducts();
-    setModalOpen(false);
+          setModalOpen(false);
 
         }
       }
@@ -228,7 +228,7 @@ const ProductDetailCards = () => {
                       </label>
                       <input
                         type="text"
-                        className="form-control shadow"
+                        className="form-control shadow rounded-pill"
                         {...register("product_name", {
                           required: "Name is required",
                         })}
@@ -242,28 +242,11 @@ const ProductDetailCards = () => {
 
                     <div className="form-group col-lg-6">
                       <label className="font-weight-bold text-uppercase">
-                        Description
-                      </label>
-                      <textarea
-                        className="form-control"
-                        {...register("product_description", {
-                          required: "Description is required",
-                        })}
-                      ></textarea>
-                      {errors.product_description && (
-                        <span className="text-danger">
-                          {errors.product_description.message}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="form-group col-lg-6">
-                      <label className="font-weight-bold text-uppercase">
                         Price
                       </label>
                       <input
                         type="number"
-                        className="form-control shadow"
+                        className="form-control shadow rounded-pill"
                         {...register("product_price", {
                           required: "Price is required",
                           min: { value: 1, message: "Price must be positive" },
@@ -276,13 +259,15 @@ const ProductDetailCards = () => {
                       )}
                     </div>
 
+
+
                     <div className="form-group col-lg-6">
                       <label className="font-weight-bold text-uppercase">
                         Quantity
                       </label>
                       <input
                         type="number"
-                        className="form-control"
+                        className="form-control rounded-pill"
                         {...register("product_quantity", {
                           required: "Quantity is required",
                           min: {
@@ -304,7 +289,7 @@ const ProductDetailCards = () => {
                       </label>
                       <input
                         type="number"
-                        className="form-control shadow"
+                        className="form-control shadow rounded-pill"
                         {...register("product_stock", {
                           required: "Stock is required",
                           min: {
@@ -326,7 +311,7 @@ const ProductDetailCards = () => {
                       </label>
                       <input
                         type="text"
-                        className="form-control shadow"
+                        className="form-control shadow rounded-pill"
                         {...register("product_category", {
                           required: "Category is required",
                         })}
@@ -338,24 +323,41 @@ const ProductDetailCards = () => {
                       )}
                     </div>
 
-                    <div className="col-lg-6 mb-3">
+                        <div className="form-group col-lg-6">
+                          <label className="fw-bold text-uppercase fs-6">
+                            Select
+                          </label>
+                          <select
+                            className="form-select rounded-pill shadow py-2"
+                            {...register("product_website_name", {
+                              required: "Please select an option",
+                            })}
+                          >
+                            <option value="">Select</option>
+                            <option value="RajLaxmi">Raj Laxmi</option>
+                            <option value="GauSwarn">GauSwarn</option>
+                            <option value="Both">Both</option>
+                          </select>
+                          {errors.product_website_name && (
+                            <span className="text-danger">
+                              {errors.product_website_name.message}
+                            </span>
+                          )}
+                        </div>
+
+                    <div className="form-group col-lg-6">
                       <label className="font-weight-bold text-uppercase">
-                        Select
+                        Description
                       </label>
-                      <select
-                        className="form-select form-select-lg px-5 py-2 shadow"
-                        {...register("product_website_name", {
-                          required: "Please select an option",
+                      <textarea
+                        className="form-control rounded-3"
+                        {...register("product_description", {
+                          required: "Description is required",
                         })}
-                      >
-                        <option value="">Select</option>
-                        <option value="RajLaxmi">Raj Laxmi</option>
-                        <option value="GauSwarn">GauSwarn</option>
-                        <option value="Both">Both</option>
-                      </select>
-                      {errors.product_website_name && (
+                      ></textarea>
+                      {errors.product_description && (
                         <span className="text-danger">
-                          {errors.product_website_name.message}
+                          {errors.product_description.message}
                         </span>
                       )}
                     </div>
@@ -374,7 +376,7 @@ const ProductDetailCards = () => {
                       </label>
                       <input
                         type="file"
-                        className="form-control shadow"
+                        className="form-control shadow rounded-pill"
                         accept="image/*"
                         onChange={(event) =>
                           handleImageUpload(event, (base64) =>

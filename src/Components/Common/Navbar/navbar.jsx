@@ -45,7 +45,7 @@ const Navbar = ({ handleSidepanel, handleSidebarOpen }) => {
           </button>
           <ul className="navbar-nav">
             <li className="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex">
-              <form className="nav-link form-inline mt-2 mt-md-0">
+              {/* <form className="nav-link form-inline mt-2 mt-md-0">
                 <div className="input-group">
                   <input
                     type="text"
@@ -58,7 +58,7 @@ const Navbar = ({ handleSidepanel, handleSidebarOpen }) => {
                     </span>
                   </div>
                 </div>
-              </form>
+              </form> */}
             </li>
           </ul>
           <ul className="navbar-nav navbar-nav-right ml-lg-auto">
